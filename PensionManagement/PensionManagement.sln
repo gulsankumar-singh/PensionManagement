@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{C895A73E-99B3-40FD-BB3A-7D2013EE725D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PensionManagementPortal", "PensionManagementPortal", "{A65D568C-027F-4902-AE71-C75EFA43C301}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PensionerDetailModule", "PensionerDetailModule", "{669FE4FE-BFD0-4EEB-8AC2-3C6CF77C1091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule.API", "Microservices\PensionerDetailModule\PensionerDetailModule.API\PensionerDetailModule.API.csproj", "{8B054E25-46DA-4B1C-AF8D-A68AB94D5652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule.Models", "Microservices\PensionerDetailModule\PensionerDetailModule.Models\PensionerDetailModule.Models.csproj", "{C03948BB-771C-4A4F-A401-66BEE2C41AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule.DataAccess", "Microservices\PensionerDetailModule\PensionerDetailModule.DataAccess\PensionerDetailModule.DataAccess.csproj", "{2C4C31A5-86DB-4DFA-BC36-BDCC87AF46FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B054E25-46DA-4B1C-AF8D-A68AB94D5652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B054E25-46DA-4B1C-AF8D-A68AB94D5652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B054E25-46DA-4B1C-AF8D-A68AB94D5652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B054E25-46DA-4B1C-AF8D-A68AB94D5652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03948BB-771C-4A4F-A401-66BEE2C41AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03948BB-771C-4A4F-A401-66BEE2C41AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03948BB-771C-4A4F-A401-66BEE2C41AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03948BB-771C-4A4F-A401-66BEE2C41AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C4C31A5-86DB-4DFA-BC36-BDCC87AF46FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C4C31A5-86DB-4DFA-BC36-BDCC87AF46FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C4C31A5-86DB-4DFA-BC36-BDCC87AF46FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C4C31A5-86DB-4DFA-BC36-BDCC87AF46FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{669FE4FE-BFD0-4EEB-8AC2-3C6CF77C1091} = {C895A73E-99B3-40FD-BB3A-7D2013EE725D}
+		{8B054E25-46DA-4B1C-AF8D-A68AB94D5652} = {669FE4FE-BFD0-4EEB-8AC2-3C6CF77C1091}
+		{C03948BB-771C-4A4F-A401-66BEE2C41AFA} = {669FE4FE-BFD0-4EEB-8AC2-3C6CF77C1091}
+		{2C4C31A5-86DB-4DFA-BC36-BDCC87AF46FF} = {669FE4FE-BFD0-4EEB-8AC2-3C6CF77C1091}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80134161-A0E5-409E-8E64-AD6C4CCE17CE}
+	EndGlobalSection
+EndGlobal
