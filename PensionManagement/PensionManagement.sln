@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PensionerDetailMicroservice
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule", "PensionerDetailMicroservice\PensionerDetailModule\PensionerDetailModule.csproj", "{3314FF85-239F-4D02-8D01-D8D757D63EB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationMicroservice", "AuthenticationMicroservice", "{756D0554-D38A-48AF-9F3B-50EFA19EA6A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationModule", "AuthenticationMicroservice\AuthenticationModule\AuthenticationModule.csproj", "{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{3314FF85-239F-4D02-8D01-D8D757D63EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3314FF85-239F-4D02-8D01-D8D757D63EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3314FF85-239F-4D02-8D01-D8D757D63EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3314FF85-239F-4D02-8D01-D8D757D63EB3} = {3C8D705B-D9F5-4057-BD7D-D5F40616E463}
+		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF} = {756D0554-D38A-48AF-9F3B-50EFA19EA6A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C935984F-1768-4020-A808-F69A817D7CF9}
