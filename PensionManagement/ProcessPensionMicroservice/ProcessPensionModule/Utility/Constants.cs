@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ProcessPensionModule.Utility
 {
+    /// <summary>
+    /// Class to store all the Static Data
+    /// </summary>
     public static class Constants
     {
         public const string LOG_CONFIG_FILE = "log4net.config";

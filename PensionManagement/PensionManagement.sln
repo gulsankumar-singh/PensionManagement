@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationModule", "Aut
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessPensionMicroservice", "ProcessPensionMicroservice", "{6A9A19E0-A7BD-458A-BD41-531F780D90F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPensionModule", "ProcessPensionMicroservice\ProcessPensionModule\ProcessPensionModule.csproj", "{B35A4979-4445-4FDE-B8BA-347C0D49B988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessPensionModule", "ProcessPensionMicroservice\ProcessPensionModule\ProcessPensionModule.csproj", "{B35A4979-4445-4FDE-B8BA-347C0D49B988}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{598772C0-8EA2-4439-8FE2-EE56C67805D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598772C0-8EA2-4439-8FE2-EE56C67805D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598772C0-8EA2-4439-8FE2-EE56C67805D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598772C0-8EA2-4439-8FE2-EE56C67805D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598772C0-8EA2-4439-8FE2-EE56C67805D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

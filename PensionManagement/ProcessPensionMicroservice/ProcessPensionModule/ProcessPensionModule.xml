@@ -11,6 +11,11 @@
             <param name="aadharNumber"></param>
             <returns>Pensioner Detail with Pension Amount</returns>
         </member>
+        <member name="T:ProcessPensionModule.Utility.Constants">
+            <summary>
+            Class to store all the Static Data
+            </summary>
+        </member>
         <member name="T:ProcessPensionModule.Utility.SwaggerConfig.ConfigureSwaggerOptions">
             <summary>
             Class for Configuration of Swagger
