@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProcessPensionModule</name>
+    </assembly>
+    <members>
+        <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.ProcessPension(System.Int64)">
+            <summary>
+            Process Pension based on the aadhar Number
+            </summary>
+            <param name="aadharNumber"></param>
+            <returns>Pensioner Detail with Pension Amount</returns>
+        </member>
+        <member name="T:ProcessPensionModule.Utility.SwaggerConfig.ConfigureSwaggerOptions">
+            <summary>
+            Class for Configuration of Swagger
+            </summary>
+        </member>
+        <member name="M:ProcessPensionModule.Utility.SwaggerConfig.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            Method for Configuring swagger options
+            </summary>
+            <param name="options">Swagger options parameter</param>
+        </member>
+    </members>
+</doc>

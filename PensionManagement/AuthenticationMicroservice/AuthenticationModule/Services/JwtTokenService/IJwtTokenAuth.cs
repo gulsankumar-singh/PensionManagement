@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AuthenticationModule.Services.AuthenticationService
 {
-    public interface IAuthenticate
+    public interface IJwtTokenAuth
     {
-        TokenDetail Authentication(string userName, string Password);
+        TokenDetail GenerateToken(string userName);
     }
 }

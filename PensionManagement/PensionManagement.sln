@@ -5,11 +5,15 @@ VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PensionerDetailMicroservice", "PensionerDetailMicroservice", "{3C8D705B-D9F5-4057-BD7D-D5F40616E463}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule", "PensionerDetailMicroservice\PensionerDetailModule\PensionerDetailModule.csproj", "{3314FF85-239F-4D02-8D01-D8D757D63EB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PensionerDetailModule", "PensionerDetailMicroservice\PensionerDetailModule\PensionerDetailModule.csproj", "{3314FF85-239F-4D02-8D01-D8D757D63EB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationMicroservice", "AuthenticationMicroservice", "{756D0554-D38A-48AF-9F3B-50EFA19EA6A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationModule", "AuthenticationMicroservice\AuthenticationModule\AuthenticationModule.csproj", "{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationModule", "AuthenticationMicroservice\AuthenticationModule\AuthenticationModule.csproj", "{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessPensionMicroservice", "ProcessPensionMicroservice", "{6A9A19E0-A7BD-458A-BD41-531F780D90F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPensionModule", "ProcessPensionMicroservice\ProcessPensionModule\ProcessPensionModule.csproj", "{B35A4979-4445-4FDE-B8BA-347C0D49B988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35A4979-4445-4FDE-B8BA-347C0D49B988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3314FF85-239F-4D02-8D01-D8D757D63EB3} = {3C8D705B-D9F5-4057-BD7D-D5F40616E463}
 		{1D369B02-7FB6-4FB8-AF63-41D828FC9EAF} = {756D0554-D38A-48AF-9F3B-50EFA19EA6A4}
+		{B35A4979-4445-4FDE-B8BA-347C0D49B988} = {6A9A19E0-A7BD-458A-BD41-531F780D90F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C935984F-1768-4020-A808-F69A817D7CF9}

@@ -1,5 +1,6 @@
 ﻿using AuthenticationModule.Models;
 using AuthenticationModule.Services.AuthenticationService;
+using AuthenticationModule.Utility;
 using log4net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -15,12 +16,12 @@ namespace AuthenticationModule.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IAuthenticate _authenticate;
+        private readonly IJwtTokenAuth _authenticate;
         private readonly ILog _logger; 
-        public AuthenticationController(IAuthenticate authenticate, IConfiguration configuration)
+        public AuthenticationController(IJwtTokenAuth authenticate, IConfiguration configuration)
         {
             _configuration = configuration;
-            _authenticate = new Authenticate(configuration);
+            _authenticate = new JwtTokenAuth(configuration);
             _logger = LogManager.GetLogger(typeof(AuthenticationController));
         }
 
@@ -35,11 +36,12 @@ namespace AuthenticationModule.Controllers
             try
             {
                 _logger.Info("GetAuthenticationToken method execution started");
-                token = _authenticate.Authentication(user.UserName, user.Password);
 
-                if(token == null)
+                if(user.UserName != Constants.USER || user.Password != Constants.PASSWORD)
                     return BadRequest(new { message = "Username or password is incorrect" });
-                
+
+                token = _authenticate.GenerateToken(user.UserName);
+
                 _logger.Info("GetAuthenticationToken method execution ended");
                 return Ok(token);
             }

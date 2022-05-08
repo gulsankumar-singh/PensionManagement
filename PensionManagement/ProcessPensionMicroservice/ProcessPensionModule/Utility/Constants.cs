@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuthenticationModule.Utility
+namespace ProcessPensionModule.Utility
 {
     public static class Constants
     {
         public const string LOG_CONFIG_FILE = "log4net.config";
-        public const string USER = "AppUser";
-        public const string PASSWORD = "Pass@123";
+        public const string DATA_SET = @"Services\DataSetup\PensionerList.csv";
+        public const string GET_PENSIONER_DETAIL = "/api/PensionerDetail/PensionerDetailByAadhaar?aadhaarNumber=";
+        public const string PENSIONER_DETAIL_API_URL = "PensionerDetailAPIURL";
         public const string JWT_DETAIL = "JwtDetail";
         public const string SUBJECT = "Subject";
         public const string ISSUER = "Issuer";

@@ -29,6 +29,17 @@ namespace PensionerDetailModule
         {
 
             services.AddControllers(p => p.Filters.Add(new LogFilterAttribute()));
+
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder
+            //        .SetIsOriginAllowed((host) => true)
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials());
+            //});
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PensionerDetailModule", Version = "v1" });

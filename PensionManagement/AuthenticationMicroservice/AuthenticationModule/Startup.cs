@@ -35,7 +35,7 @@ namespace AuthenticationModule
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuthenticationModule", Version = "v1" });
             });
-            services.AddScoped<IAuthenticate, Authenticate>();
+            services.AddScoped<IJwtTokenAuth, JwtTokenAuth>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
