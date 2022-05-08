@@ -2,6 +2,7 @@
 using AuthenticationModule.Services.AuthenticationService;
 using log4net;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -25,7 +26,10 @@ namespace AuthenticationModule.Controllers
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public IActionResult GetAuthenticationToken([FromBody] User user)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenDetail))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<TokenDetail> GetAuthenticationToken([FromBody] User user)
         {
             TokenDetail token = null;
             try
@@ -42,7 +46,7 @@ namespace AuthenticationModule.Controllers
             catch(Exception ex)
             {
                 _logger.Error(ex);
-                throw;
+                return NotFound();
             }
 
         }
