@@ -1,31 +1,27 @@
-version: '3.4'
+version: "3.4"
 
 services:
   authenticationmodule:
+    container_name: authenticationmodule-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "8000:80"
+
   pensionerdetailmodule:
+    container_name: pensionerdetailmodule-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "8001:80"
 
   processpensionmodule:
+    container_name: processpensionmodule-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - "PensionerDetailAPIURL=http://pensionerdetailmodule-api"
+    depends_on:
+      - authenticationmodule
+      - pensionerdetailmodule
     ports:
-      - "80"
-      - "443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "8002:80"

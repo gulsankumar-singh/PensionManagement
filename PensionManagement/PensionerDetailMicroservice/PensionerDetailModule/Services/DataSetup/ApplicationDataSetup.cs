@@ -30,8 +30,8 @@ namespace PensionerDetailModule.Services.DataSetup
                 }
             
                 _pensionerDetails = new List<PensionerDetail>();
-                string path = Path.Combine(Directory.GetCurrentDirectory(), Constants.DATA_SET);
-                using (StreamReader sr = new StreamReader(path))
+                //string path = Path.Combine(Directory.GetCurrentDirectory(), Constants.DATA_SET);
+                using (StreamReader sr = new StreamReader("PensionerList.csv"))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
