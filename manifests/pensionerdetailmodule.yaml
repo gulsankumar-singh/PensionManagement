@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pensionerdetailmodule-deployment
   labels:
-    app: shoppingapi
+    app: pensionerdetailmodule
 spec:
   replicas: 1
   selector:

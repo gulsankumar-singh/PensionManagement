@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: authenticationmodule-deployment
   labels:
-    app: shoppingapi
+    app: authenticationmodule
 spec:
   replicas: 1
   selector:
