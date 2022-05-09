@@ -12,15 +12,30 @@ using System.Threading.Tasks;
 
 namespace ProcessPensionModule.Services.CallPensionerDetailService
 {
+    /// <summary>
+    /// Class for getting the Pensioner detail from 
+    /// the PensionerDetailMicroservice
+    /// </summary>
     public class GetPensionerDetail : IGetPensionerDetail
     {
         private string PensionerDetailAPIURL { get; set; }
         private readonly ILog _logger;
+
+        /// <summary>
+        /// GetPensionerDetail Constructor
+        /// </summary>
+        /// <param name="configuration"></param>
         public GetPensionerDetail(IConfiguration configuration)
         {
             _logger = LogManager.GetLogger(typeof(GetPensionerDetail));
             PensionerDetailAPIURL = configuration.GetSection(Constants.PENSIONER_DETAIL_API_URL).Value;
         }
+
+        /// <summary>
+        /// Get Pensioner detail from PensionerDetailMicroservice
+        /// </summary>
+        /// <param name="aadhaarNumber"></param>
+        /// <returns></returns>
         public async Task<PensionerInfo> GetPensionerDetailAsync(long aadhaarNumber)
         {
             PensionerInfo pensioner = null;
