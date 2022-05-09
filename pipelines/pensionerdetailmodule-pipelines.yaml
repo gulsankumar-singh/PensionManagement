@@ -3,7 +3,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-  - main
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - PensionManagement/PensionerDetailMicroservice/PensionerDetailModule/*
+      - manifests/pensionerdetailmodule.yaml
 
 resources:
   - repo: self
@@ -70,6 +76,7 @@ stages:
                     action: deploy
                     manifests: |
                       $(Pipeline.Workspace)/manifests/pensionerdetailmodule.yaml
+                      $(Pipeline.Workspace)/manifests/pensionerdetail-configmap.yaml
                     imagePullSecrets: |
                       $(imagePullSecret)
                     containers: |
