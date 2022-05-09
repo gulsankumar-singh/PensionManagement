@@ -15,7 +15,7 @@ variables:
   containerRegistry: "azpensionmanagement.azurecr.io"
   dockerfilePath: "PensionManagement/AuthenticationMicroservice/AuthenticationModule/Dockerfile"
   tag: "$(Build.BuildId)"
-  imagePullSecret: "azpensionmanagementb587-auth"
+  imagePullSecret: "acr-secret"
 
   # Agent VM image name
   vmImageName: "ubuntu-latest"
