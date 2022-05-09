@@ -2,6 +2,7 @@
 using AuthenticationModule.Utility;
 using log4net;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -16,32 +17,31 @@ namespace AuthenticationModule.Services.AuthenticationService
     public class JwtTokenAuth : IJwtTokenAuth
     {
         private readonly IConfiguration _configuration;
-        private readonly ILog _logger;
-        public JwtTokenAuth(IConfiguration configuration)
+        private readonly ILogger<JwtTokenAuth> _logger;
+        public JwtTokenAuth(IConfiguration configuration, ILogger<JwtTokenAuth> logger)
         {
             _configuration = configuration;
-            _logger = LogManager.GetLogger(typeof(JwtTokenAuth));
+            _logger = logger;
         }
 
         public TokenDetail GenerateToken(string userName)
         {
             try
             {
-                _logger.Info("Authentication method execution started");
 
                 var claims = new[] {
-                        new Claim(JwtRegisteredClaimNames.Sub, _configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.SUBJECT).Value),
+                        new Claim(JwtRegisteredClaimNames.Sub, _configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.SUBJECT).Value),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim(ClaimTypes.Name, userName)
-                    };
+                };
 
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.KEY).Value));
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.KEY).Value));
                 var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
                 var token = new JwtSecurityToken(
-                        _configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.ISSUER).Value,
-                         _configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.AUDIENCE).Value,
+                        _configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.ISSUER).Value,
+                         _configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.AUDIENCE).Value,
                         claims,
                         expires: DateTime.UtcNow.AddMinutes(30),
                         signingCredentials: signIn);
@@ -68,14 +68,12 @@ namespace AuthenticationModule.Services.AuthenticationService
                     Token = tokenHandler.WriteToken(token),
                     Expiration = token.ValidTo
                 };
-       
-                _logger.Info("Authentication method execution ended");
 
                 return tokenDetail;
             }
             catch(Exception ex)
             {
-                _logger.Error(ex);
+                _logger.LogInformation(ex.Message);
                 throw;
             }
 

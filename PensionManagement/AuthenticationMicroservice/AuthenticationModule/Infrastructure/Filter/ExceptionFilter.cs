@@ -7,9 +7,8 @@ using log4net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
-using PensionerDetailModule.Infrastructure.Exceptions;
 
-namespace PensionerDetailModule.Infrastructure.Filter
+namespace AuthenticationModule.Infrastructure.Filter
 {
     public class ExceptionFilter : ExceptionFilterAttribute
     {
@@ -24,11 +23,6 @@ namespace PensionerDetailModule.Infrastructure.Filter
         public override void OnException(ExceptionContext context)
         {
             var statusCode = HttpStatusCode.InternalServerError;
-
-            if (context.Exception is EntityNotFoundException)
-            {
-                statusCode = HttpStatusCode.NotFound;
-            }
 
             context.HttpContext.Response.ContentType = "application/json";
             context.HttpContext.Response.StatusCode = (int)statusCode;
