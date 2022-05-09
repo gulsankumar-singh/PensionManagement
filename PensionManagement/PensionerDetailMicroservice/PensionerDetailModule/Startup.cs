@@ -1,20 +1,21 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using PensionerDetailModule.Services.DataSetup;
 using PensionerDetailModule.Services.Filter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PensionerDetailModule.Utility;
+using PensionerDetailModule.Utility.SwaggerConfig;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Text;
 
 namespace PensionerDetailModule
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -28,7 +29,7 @@ namespace PensionerDetailModule
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers(p => p.Filters.Add(new LogFilterAttribute()));
+            services.AddControllers(p => p.Filters.Add(typeof(ExceptionFilter)));
 
             //services.AddCors(options =>
             //{
@@ -40,10 +41,28 @@ namespace PensionerDetailModule
             //        .AllowCredentials());
             //});
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PensionerDetailModule", Version = "v1" });
+            services.AddScoped<IApplicationDataSetup, ApplicationDataSetup>();
+
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            services.AddSwaggerGen();
+
+            services.AddAuthentication(auth => {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x => {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.KEY).Value)),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.ISSUER).Value,
+                    ValidAudience = Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.AUDIENCE).Value
+                };
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +80,7 @@ namespace PensionerDetailModule
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
