@@ -3,7 +3,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-  - main
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - PensionManagement/ProcessPensionMicroservice/ProcessPensionModule/*
+      - manifests/processpensionmodule.yaml
 
 resources:
   - repo: self
@@ -15,7 +21,7 @@ variables:
   containerRegistry: "azpensionmanagement.azurecr.io"
   dockerfilePath: "PensionManagement/ProcessPensionMicroservice/ProcessPensionModule/Dockerfile"
   tag: "$(Build.BuildId)"
-  imagePullSecret: "acr-secret"
+  imagePullSecret: "acr-secret-pp"
 
   # Agent VM image name
   vmImageName: "ubuntu-latest"
