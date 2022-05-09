@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pensionerdetailmodule-deployment
+  labels:
+    app: shoppingapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pensionerdetailmodule
+  template:
+    metadata:
+      labels:
+        app: pensionerdetailmodule
+    spec:
+      containers:
+        - name: pensionerdetailmodule
+          image: azpensionmanagement.azurecr.io/pensionerdetailmodule:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pensionerdetailmodule-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: pensionerdetailmodule
+  ports:
+    - protocol: TCP
+      port: 80

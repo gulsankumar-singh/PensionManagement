@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authenticationmodule-deployment
+  labels:
+    app: shoppingapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authenticationmodule
+  template:
+    metadata:
+      labels:
+        app: authenticationmodule
+    spec:
+      containers:
+        - name: authenticationmodule
+          image: azpensionmanagement.azurecr.io/authenticationmodule:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authenticationmodule-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: authenticationmodule
+  ports:
+    - protocol: TCP
+      port: 80
