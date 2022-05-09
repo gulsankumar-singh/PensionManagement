@@ -16,8 +16,8 @@ namespace ProcessPensionModule
     {
         public static void Main(string[] args)
         {
-            var log4netRepository = log4net.LogManager.GetRepository(Assembly.GetEntryAssembly());
-            log4net.Config.XmlConfigurator.Configure(log4netRepository, new FileInfo(Constants.LOG_CONFIG_FILE));
+            //var log4netRepository = log4net.LogManager.GetRepository(Assembly.GetEntryAssembly());
+            //log4net.Config.XmlConfigurator.Configure(log4netRepository, new FileInfo(Constants.LOG_CONFIG_FILE));
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -29,7 +29,7 @@ namespace ProcessPensionModule
                 }).ConfigureLogging(builder =>
                 {
                     builder.SetMinimumLevel(LogLevel.Trace);
-                    builder.AddLog4Net();
+                    builder.AddLog4Net(StaticData.LOG_CONFIG_FILE);
                 });
     }
 }

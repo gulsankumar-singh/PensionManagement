@@ -8,10 +8,9 @@ namespace ProcessPensionModule.Utility
     /// <summary>
     /// Class to store all the Static Data
     /// </summary>
-    public static class Constants
+    public static class StaticData
     {
         public const string LOG_CONFIG_FILE = "log4net.config";
-        public const string DATA_SET = @"Services\DataSetup\PensionerList.csv";
         public const string GET_PENSIONER_DETAIL = "/api/PensionerDetail/PensionerDetailByAadhaar?aadhaarNumber=";
         public const string PENSIONER_DETAIL_API_URL = "PensionerDetailAPIURL";
         public const string JWT_DETAIL = "JwtDetail";
@@ -19,5 +18,9 @@ namespace ProcessPensionModule.Utility
         public const string ISSUER = "Issuer";
         public const string AUDIENCE = "Audience";
         public const string KEY = "Key";
+        public const string ACCESS_TOKEN = "access_token";
+        public const string CONTENT_TYPE = "application/json";
+        public const string AUTHORIZATION = "Authorization";
+        public const string BEARER = "Bearer ";
     }
 }

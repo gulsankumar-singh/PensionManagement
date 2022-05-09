@@ -1,13 +1,12 @@
-﻿using log4net;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ProcessPensionModule.Models;
 using ProcessPensionModule.Services.CallPensionerDetailService;
-using ProcessPensionModule.Utility.CalculatePension;
+using ProcessPensionModule.Utility;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProcessPensionModule.Controllers
@@ -17,13 +16,11 @@ namespace ProcessPensionModule.Controllers
     [ApiController]
     public class ProcessPensionController : ControllerBase
     {
-        private readonly ILog _logger;
-        private readonly ICalculatePensionAmount _calculatePensionAmount;
+        private readonly ILogger<ProcessPensionController> _logger;
         private readonly IGetPensionerDetail _getPensionerDetail;
-        public ProcessPensionController(ICalculatePensionAmount calculatePensionAmount, IGetPensionerDetail getPensionerDetail)
+        public ProcessPensionController(ILogger<ProcessPensionController> logger, IGetPensionerDetail getPensionerDetail)
         {
-            _logger = LogManager.GetLogger(typeof(ProcessPensionController));
-            _calculatePensionAmount = calculatePensionAmount;
+            _logger = logger;
             _getPensionerDetail = getPensionerDetail;
         }
 
@@ -40,42 +37,59 @@ namespace ProcessPensionModule.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PensionerDetail>> ProcessPension(long aadharNumber)
         {
-            try
+            _logger.LogInformation("ProcessPension method execution started...");
+            var authenticationInfo = await HttpContext.AuthenticateAsync();
+            string token = authenticationInfo.Properties.GetTokenValue(StaticData.ACCESS_TOKEN);
+
+            PensionerInfo pensionerInfo = await _getPensionerDetail.GetPensionerDetailAsync(aadharNumber, token);
+            //if pensioner not found return null
+            if(pensionerInfo == null)
             {
-                PensionerInfo pensionerInfo = await _getPensionerDetail.GetPensionerDetailAsync(aadharNumber);
-                if(pensionerInfo == null)
-                {
-                    return BadRequest();
-                }
-
-                PensionAmountModel amountModel = new PensionAmountModel
-                {
-                    Allowance = pensionerInfo.Allowances,
-                    SalaryEarned = pensionerInfo.SalaryEarned,
-                    PensionType = pensionerInfo.PensionType,
-                    BankType = pensionerInfo.BankType
-                };
-
-                double pensionAmount = _calculatePensionAmount.GetPensionAmount(amountModel);
-
-                PensionerDetail pensionerDetail = new PensionerDetail
-                {
-                    Name = pensionerInfo.Name,
-                    DateOfBirth = pensionerInfo.DateOfBirth,
-                    PAN = pensionerInfo.PAN,
-                    AadharNumber = pensionerInfo.AadharNumber,
-                    PensionAmount = pensionAmount,
-                    PensionType = Enum.GetName(typeof(PensionTypes), pensionerInfo.PensionType),
-                    BankType = Enum.GetName(typeof(BankTypes), pensionerInfo.BankType),
-
-                };
-                return Ok(pensionerDetail);
+                return null;
             }
-            catch(Exception ex)
+
+            PensionAmountModel amountModel = new PensionAmountModel
             {
-                _logger.Error(ex);
-                return NotFound();
-            }
-        } 
+                Allowance = pensionerInfo.Allowances,
+                SalaryEarned = pensionerInfo.SalaryEarned,
+                PensionType = pensionerInfo.PensionType,
+                BankType = pensionerInfo.BankType
+            };
+
+            double pensionAmount = CalculatePensionAmount(amountModel);
+
+            PensionerDetail pensionerDetail = new PensionerDetail
+            {
+                Name = pensionerInfo.Name,
+                DateOfBirth = pensionerInfo.DateOfBirth,
+                PAN = pensionerInfo.PAN,
+                AadharNumber = pensionerInfo.AadharNumber,
+                PensionAmount = pensionAmount,
+                PensionType = Enum.GetName(typeof(PensionTypes), pensionerInfo.PensionType),
+                BankType = Enum.GetName(typeof(BankTypes), pensionerInfo.BankType),
+
+            };
+            return Ok(pensionerDetail); 
+        }
+
+        /// <summary>
+        /// Helper for calculating the pension amount
+        /// </summary>
+        /// <param name="pensionAmountModel"></param>
+        /// <returns></returns>
+        private static double CalculatePensionAmount(PensionAmountModel pensionAmountModel)
+        {
+
+            int pensionType = (int)pensionAmountModel.PensionType;
+            int bankType = (int)pensionAmountModel.BankType;
+            int serviceCharge = bankType == 0 ? 500 : 550;
+            double salaryPercentage = pensionType == 0 ? 0.8 : 0.5;
+
+            double pensionAmount = salaryPercentage * pensionAmountModel.SalaryEarned + pensionAmountModel.Allowance + serviceCharge;
+                
+            pensionAmount = Math.Round(pensionAmount, 2);
+            
+            return pensionAmount;
+        }
     }
 }

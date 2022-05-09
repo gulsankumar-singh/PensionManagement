@@ -8,6 +8,6 @@ namespace ProcessPensionModule.Services.CallPensionerDetailService
 {
     public interface IGetPensionerDetail
     {
-        Task<PensionerInfo> GetPensionerDetailAsync(long aadhaarNumber);
+        Task<PensionerInfo> GetPensionerDetailAsync(long aadhaarNumber, string accessToken);
     }
 }

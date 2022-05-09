@@ -11,7 +11,46 @@
             <param name="aadharNumber"></param>
             <returns>Pensioner Detail with Pension Amount</returns>
         </member>
-        <member name="T:ProcessPensionModule.Utility.Constants">
+        <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.CalculatePensionAmount(ProcessPensionModule.Models.PensionAmountModel)">
+            <summary>
+            Helper for calculating the pension amount
+            </summary>
+            <param name="pensionAmountModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProcessPensionModule.Services.Filter.ExceptionFilter.#ctor(Microsoft.Extensions.Logging.ILogger{ProcessPensionModule.Services.Filter.ExceptionFilter})">
+            <summary>
+            ExceptionFilter constructor
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:ProcessPensionModule.Services.Filter.ExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            OnException method for handling if exception occur
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:ProcessPensionModule.Services.CallPensionerDetailService.GetPensionerDetail">
+            <summary>
+            Class for getting the Pensioner detail from 
+            the PensionerDetailMicroservice
+            </summary>
+        </member>
+        <member name="M:ProcessPensionModule.Services.CallPensionerDetailService.GetPensionerDetail.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{ProcessPensionModule.Services.CallPensionerDetailService.GetPensionerDetail})">
+            <summary>
+            GetPensionerDetail Constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ProcessPensionModule.Services.CallPensionerDetailService.GetPensionerDetail.GetPensionerDetailAsync(System.Int64,System.String)">
+            <summary>
+            Get Pensioner detail from PensionerDetailMicroservice
+            </summary>
+            <param name="aadhaarNumber"></param>
+            <param name="accessToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProcessPensionModule.Utility.StaticData">
             <summary>
             Class to store all the Static Data
             </summary>

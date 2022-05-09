@@ -6,12 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using ProcessPensionModule.Models;
+using ProcessPensionModule.Infrastructure.Filter;
 using ProcessPensionModule.Services.CallPensionerDetailService;
 using ProcessPensionModule.Utility;
-using ProcessPensionModule.Utility.CalculatePension;
 using ProcessPensionModule.Utility.SwaggerConfig;
-using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 
@@ -30,7 +28,7 @@ namespace ProcessPensionModule
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options => options.Filters.Add(typeof(ExceptionFilter)));
             // services.AddSwaggerGen(c =>
             // {
             //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProcessPensionModule", Version = "v1" });
@@ -38,16 +36,8 @@ namespace ProcessPensionModule
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
 
-            services.AddScoped<ICalculatePensionAmount, CalculatePensionAmount>();
             services.AddScoped<IGetPensionerDetail, GetPensionerDetail>();
 
-            //var appSettingsSection = Configuration.GetSection("AppSettings");
-
-            //services.Configure<AppSettings>(appSettingsSection);
-
-            //var appSettings = appSettingsSection.Get<AppSettings>();
-
-            //var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services.AddAuthentication(auth => {
                 auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,11 +47,11 @@ namespace ProcessPensionModule
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.KEY).Value)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.KEY).Value)),
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = Configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.ISSUER).Value,
-                    ValidAudience = Configuration.GetSection(Constants.JWT_DETAIL).GetSection(Constants.AUDIENCE).Value
+                    ValidIssuer = Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.ISSUER).Value,
+                    ValidAudience = Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.AUDIENCE).Value
                 };
             });
         }
