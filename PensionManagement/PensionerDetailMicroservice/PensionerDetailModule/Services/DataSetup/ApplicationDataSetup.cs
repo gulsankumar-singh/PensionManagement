@@ -12,16 +12,16 @@ namespace PensionerDetailModule.Services.DataSetup
     public class ApplicationDataSetup : IApplicationDataSetup
     { 
         private static List<PensionerDetail> _pensionerDetails = null;
-        private static ILog _logger = null;
+        private static ILogger<ApplicationDataSetup> _logger;
 
-        public ApplicationDataSetup()
+        public ApplicationDataSetup(ILogger<ApplicationDataSetup> logger)
         {
-            _logger = LogManager.GetLogger(typeof(ApplicationDataSetup));
+            _logger = logger;//LogManager.GetLogger(typeof(ApplicationDataSetup));
         }
 
         public List<PensionerDetail> GetPensionerDetails()
         {
-            _logger.Info("Starting Get Pensioner Details method");
+            _logger.LogInformation("Starting Get Pensioner Details method");
 
             try{
                 if (_pensionerDetails != null && _pensionerDetails.Any())
@@ -55,11 +55,9 @@ namespace PensionerDetailModule.Services.DataSetup
                 }
             }
             catch(Exception ex){
-                _logger.Error(ex);
+                _logger.LogError(ex.Message);
                 return null;
             }
-
-            _logger.Info("Ending Get Pensioner Details method");
             return _pensionerDetails;
         }
     }

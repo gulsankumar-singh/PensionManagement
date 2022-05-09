@@ -1,7 +1,9 @@
 ﻿using log4net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PensionerDetailModule.Infrastructure.Exceptions;
 using PensionerDetailModule.Models;
 using PensionerDetailModule.Services.DataSetup;
 using System;
@@ -11,17 +13,19 @@ using System.Threading.Tasks;
 
 namespace PensionerDetailModule.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PensionerDetailController : ControllerBase
     {
         private readonly IApplicationDataSetup _applicationDataSetup;
-        private readonly ILog _logger;
+        //private readonly ILog _logger;
+        private readonly ILogger<PensionerDetailController> _logger;
 
-        public PensionerDetailController()
+        public PensionerDetailController(IApplicationDataSetup applicationDataSetup, ILogger<PensionerDetailController> logger)
         {
-            _logger = LogManager.GetLogger(typeof(PensionerDetailController));
-            _applicationDataSetup = new ApplicationDataSetup();
+            _logger = logger;
+            _applicationDataSetup = applicationDataSetup;
         }
 
         /// <summary>
@@ -32,7 +36,7 @@ namespace PensionerDetailModule.API.Controllers
         [HttpGet]
         public List<PensionerDetail> GetPensionerList()
         {
-            _logger.Info("Calling GetPensionerList method");
+            _logger.LogInformation("Calling GetPensionerList method");
             return _applicationDataSetup.GetPensionerDetails();
         }
 
@@ -46,20 +50,17 @@ namespace PensionerDetailModule.API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PensionerDetail))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<PensionerDetail> PensionerDetailByAadhaar(long aadhaarNumber)
         {
-            PensionerDetail pensioner = null;
-            try{
-                _logger.Info("Calling PensionerDetailByAadhaar method");
-                List<PensionerDetail> pensionerList = _applicationDataSetup.GetPensionerDetails();
-                pensioner = pensionerList.FirstOrDefault(i => i.AadharNumber == aadhaarNumber);
-                return Ok(pensioner);
-            }
-            catch(Exception ex){
-                
-                _logger.Error(ex);
-                return NotFound();
-            }
+            _logger.LogInformation("Calling PensionerDetailByAadhaar method");
+            List<PensionerDetail> pensionerList = _applicationDataSetup.GetPensionerDetails();
+            PensionerDetail pensioner = pensionerList.FirstOrDefault(i => i.AadharNumber == aadhaarNumber);
+            if(pensioner == null)
+                throw new EntityNotFoundException();
+
+            return Ok(pensioner);
+          
         }
     }
 }
