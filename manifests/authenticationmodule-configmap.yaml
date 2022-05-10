@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: authenticationmodule-configmap
-data:
-  authenticationmodule_url: http://authenticationmodule-service

@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: pensionerdetailmodule-configmap
-data:
-  pensionerdetailmodule_url: http://pensionerdetailmodule-service
