@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PensionerDetailService", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule", "PensionerDetailService\PensionerDetailModule\PensionerDetailModule.csproj", "{51230AD9-4E73-4AC7-980B-46B511F8D005}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationService", "AuthenticationService", "{DBBB752B-82E3-4632-AB24-ED496EE3D92B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationModule", "AuthenticationService\AuthenticationModule\AuthenticationModule.csproj", "{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{51230AD9-4E73-4AC7-980B-46B511F8D005}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51230AD9-4E73-4AC7-980B-46B511F8D005}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51230AD9-4E73-4AC7-980B-46B511F8D005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{51230AD9-4E73-4AC7-980B-46B511F8D005} = {9F985D17-1557-42F8-8570-B520F1C1B9FB}
+		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF} = {DBBB752B-82E3-4632-AB24-ED496EE3D92B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FB7C985-8FE9-4527-B5A5-BB97A6A1763E}
