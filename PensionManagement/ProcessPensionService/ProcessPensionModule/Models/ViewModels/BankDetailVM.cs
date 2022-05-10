@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PensionerDetailModule.Models
+namespace ProcessPensionModule.Models.ViewModels
 {
-    public class BankDetailDto
+    public class BankDetailVM
     {
         public string BankName { get; set; }
         public BankTypes BankType { get; set; }
