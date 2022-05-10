@@ -24,6 +24,11 @@ namespace AuthenticationModule.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get Authentication token
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>Token Detail</returns>
         [AllowAnonymous]
         [HttpPost("Authenticate")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenDetail))]

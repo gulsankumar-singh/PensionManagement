@@ -16,6 +16,10 @@ namespace ProcessPensionModule.Utility
         public const string PENSIONER_DETAIL_API_URL = "PensionerDetailAPIURL";
         public const string CONTENT_TYPE = "application/json";
         public const string GET_PENSIONER_DETAIL = "/api/PensionerDetail/PensionerDetailByAadhaar?aadhaarNumber=";
+        public const string ACCESS_TOKEN = "access_token";
+        public const string AUTHORIZATION = "Authorization";
+        public const string BEARER = "Bearer ";
+
 
     }
 }

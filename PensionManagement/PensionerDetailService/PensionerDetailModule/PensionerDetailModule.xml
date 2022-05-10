@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PensionerDetailModule</name>
+    </assembly>
+    <members>
+        <member name="M:PensionerDetailModule.API.Controllers.PensionerDetailController.GetPensionerList">
+            <summary>
+            Get List of Pensioner
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PensionerDetailModule.API.Controllers.PensionerDetailController.PensionerDetailByAadhaar(System.Int64)">
+            <summary>
+            Get Pensioner Detail by aadhaarNumber
+            </summary>
+            <param name="aadhaarNumber"></param>
+            <returns>Pensioner detail associated to the aadhaarNumber</returns>
+        </member>
+        <member name="T:PensionerDetailModule.Utility.SwaggerConfig.ConfigureSwaggerOptions">
+            <summary>
+            Class for Configuration of Swagger
+            </summary>
+        </member>
+        <member name="M:PensionerDetailModule.Utility.SwaggerConfig.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            Method for Configuring swagger options
+            </summary>
+            <param name="options">Swagger options parameter</param>
+        </member>
+    </members>
+</doc>

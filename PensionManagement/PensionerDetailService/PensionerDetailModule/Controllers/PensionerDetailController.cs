@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace PensionerDetailModule.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PensionerDetailController : ControllerBase
@@ -49,7 +49,7 @@ namespace PensionerDetailModule.API.Controllers
         /// <returns>Pensioner detail associated to the aadhaarNumber</returns>
         [Route("PensionerDetailByAadhaar")]
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PensionerDetail))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PensionerDetailDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<PensionerDetailDto> PensionerDetailByAadhaar(long aadhaarNumber)

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ProcessPensionModule.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProcessPensionController : ControllerBase

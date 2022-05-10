@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -41,12 +42,14 @@ namespace ProcessPensionModule.Services.GetPensionerDetailQueries
             try
             {
                 HttpContext httpContext = _httpContextAccessor.HttpContext;
+                var authenticationInfo = await httpContext.AuthenticateAsync();
+                string token = authenticationInfo.Properties.GetTokenValue(StaticData.ACCESS_TOKEN);
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(PensionerDetailAPIURL);
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(StaticData.CONTENT_TYPE));
 
-                    //client.DefaultRequestHeaders.Add(StaticData.AUTHORIZATION, StaticData.BEARER + accessToken);
+                    client.DefaultRequestHeaders.Add(StaticData.AUTHORIZATION, StaticData.BEARER + token);
                     HttpResponseMessage responseMessage = await client.GetAsync(StaticData.GET_PENSIONER_DETAIL + aadhaarNumber);
                     if (responseMessage.IsSuccessStatusCode)
                     {

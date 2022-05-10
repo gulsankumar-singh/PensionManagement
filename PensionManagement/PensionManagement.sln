@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationService", "Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationModule", "AuthenticationService\AuthenticationModule\AuthenticationModule.csproj", "{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessPensionService", "ProcessPensionService", "{61D5DF76-9D8E-416E-A775-2B31C135CA5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPensionModule", "ProcessPensionService\ProcessPensionModule\ProcessPensionModule.csproj", "{435A67C0-904D-4DEF-997D-750B17323F29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435A67C0-904D-4DEF-997D-750B17323F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435A67C0-904D-4DEF-997D-750B17323F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435A67C0-904D-4DEF-997D-750B17323F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435A67C0-904D-4DEF-997D-750B17323F29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{51230AD9-4E73-4AC7-980B-46B511F8D005} = {9F985D17-1557-42F8-8570-B520F1C1B9FB}
 		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF} = {DBBB752B-82E3-4632-AB24-ED496EE3D92B}
+		{435A67C0-904D-4DEF-997D-750B17323F29} = {61D5DF76-9D8E-416E-A775-2B31C135CA5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FB7C985-8FE9-4527-B5A5-BB97A6A1763E}

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProcessPensionModule</name>
+    </assembly>
+    <members>
+        <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.ProcessPension(System.Int64)">
+            <summary>
+            Process Pension based on the aadhar Number
+            </summary>
+            <param name="aadharNumber"></param>
+            <returns>Pensioner Detail with Pension Amount</returns>
+        </member>
+        <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.CalculatePensionAmount(ProcessPensionModule.Models.PensionAmountModel)">
+            <summary>
+            Helper for calculating the pension amount
+            </summary>
+            <param name="pensionAmountModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            GetPensionerDetail Constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail.GetPensionerDetailByAadhaar(System.Int64)">
+            <summary>
+            Get Pensioner detail from PensionerDetailMicroservice
+            </summary>
+            <param name="aadhaarNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProcessPensionModule.Utility.SwaggerConfig.ConfigureSwaggerOptions">
+            <summary>
+            Class for Configuration of Swagger
+            </summary>
+        </member>
+        <member name="M:ProcessPensionModule.Utility.SwaggerConfig.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            Method for Configuring swagger options
+            </summary>
+            <param name="options">Swagger options parameter</param>
+        </member>
+    </members>
+</doc>
