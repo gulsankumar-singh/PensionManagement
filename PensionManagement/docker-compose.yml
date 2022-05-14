@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  authenticationmodule:
+    image: ${DOCKER_REGISTRY-}authenticationmodule
+    build:
+      context: .
+      dockerfile: AuthenticationService/AuthenticationModule/Dockerfile
+
+  pensionerdetailmodule:
+    image: ${DOCKER_REGISTRY-}pensionerdetailmodule
+    build:
+      context: .
+      dockerfile: PensionerDetailService/PensionerDetailModule/Dockerfile
+
+
+  processpensionmodule:
+    image: ${DOCKER_REGISTRY-}processpensionmodule
+    build:
+      context: .
+      dockerfile: ProcessPensionService/ProcessPensionModule/Dockerfile
+
