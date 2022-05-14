@@ -5,15 +5,23 @@ VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PensionerDetailService", "PensionerDetailService", "{9F985D17-1557-42F8-8570-B520F1C1B9FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModule", "PensionerDetailService\PensionerDetailModule\PensionerDetailModule.csproj", "{51230AD9-4E73-4AC7-980B-46B511F8D005}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PensionerDetailModule", "PensionerDetailService\PensionerDetailModule\PensionerDetailModule.csproj", "{51230AD9-4E73-4AC7-980B-46B511F8D005}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationService", "AuthenticationService", "{DBBB752B-82E3-4632-AB24-ED496EE3D92B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationModule", "AuthenticationService\AuthenticationModule\AuthenticationModule.csproj", "{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationModule", "AuthenticationService\AuthenticationModule\AuthenticationModule.csproj", "{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessPensionService", "ProcessPensionService", "{61D5DF76-9D8E-416E-A775-2B31C135CA5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPensionModule", "ProcessPensionService\ProcessPensionModule\ProcessPensionModule.csproj", "{435A67C0-904D-4DEF-997D-750B17323F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessPensionModule", "ProcessPensionService\ProcessPensionModule\ProcessPensionModule.csproj", "{435A67C0-904D-4DEF-997D-750B17323F29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestProject", "TestProject", "{58D9307B-A10F-46CA-8DEF-52B1C3B2A494}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationModuleTest", "TestProject\AuthenticationModuleTest\AuthenticationModuleTest.csproj", "{34032744-C837-430F-8952-4436406B4395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionerDetailModuleTest", "TestProject\PensionerDetailModuleTest\PensionerDetailModuleTest.csproj", "{6ABB3752-5CF3-4919-961B-B1550C1D55B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPensionModuleTest", "TestProject\ProcessPensionModuleTest\ProcessPensionModuleTest.csproj", "{75CA332D-0C9B-40C3-AFDE-0FAA7F1C0B8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,18 @@ Global
 		{435A67C0-904D-4DEF-997D-750B17323F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{435A67C0-904D-4DEF-997D-750B17323F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{435A67C0-904D-4DEF-997D-750B17323F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34032744-C837-430F-8952-4436406B4395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34032744-C837-430F-8952-4436406B4395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34032744-C837-430F-8952-4436406B4395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34032744-C837-430F-8952-4436406B4395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABB3752-5CF3-4919-961B-B1550C1D55B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABB3752-5CF3-4919-961B-B1550C1D55B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABB3752-5CF3-4919-961B-B1550C1D55B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABB3752-5CF3-4919-961B-B1550C1D55B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75CA332D-0C9B-40C3-AFDE-0FAA7F1C0B8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CA332D-0C9B-40C3-AFDE-0FAA7F1C0B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75CA332D-0C9B-40C3-AFDE-0FAA7F1C0B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75CA332D-0C9B-40C3-AFDE-0FAA7F1C0B8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +61,9 @@ Global
 		{51230AD9-4E73-4AC7-980B-46B511F8D005} = {9F985D17-1557-42F8-8570-B520F1C1B9FB}
 		{D9B384CF-7B72-4BFB-B2F4-E44D4CCEC2CF} = {DBBB752B-82E3-4632-AB24-ED496EE3D92B}
 		{435A67C0-904D-4DEF-997D-750B17323F29} = {61D5DF76-9D8E-416E-A775-2B31C135CA5C}
+		{34032744-C837-430F-8952-4436406B4395} = {58D9307B-A10F-46CA-8DEF-52B1C3B2A494}
+		{6ABB3752-5CF3-4919-961B-B1550C1D55B5} = {58D9307B-A10F-46CA-8DEF-52B1C3B2A494}
+		{75CA332D-0C9B-40C3-AFDE-0FAA7F1C0B8D} = {58D9307B-A10F-46CA-8DEF-52B1C3B2A494}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FB7C985-8FE9-4527-B5A5-BB97A6A1763E}

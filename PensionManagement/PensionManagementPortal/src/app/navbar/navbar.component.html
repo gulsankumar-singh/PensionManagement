@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/" class="nav-item nav-link">Home</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/pensionerlist" class="nav-item nav-link"
+            >Pensioner List</a
+          >
+        </li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/calculatepension" class="nav-item nav-link"
+            >Calculate Pension</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a routerLink="/login" class="nav-item nav-link">Login</a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a
+            style="cursor: pointer"
+            (click)="onLogout()"
+            class="nav-item nav-link"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

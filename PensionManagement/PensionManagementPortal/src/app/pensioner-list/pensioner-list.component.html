@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Pensioner List</h1>
+  <div class="card">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Aadhaar Number</th>
+          <th scope="col">PAN</th>
+          <th scope="col">Salary Earned</th>
+          <th scope="col">Allowance</th>
+          <th scope="col">Pension Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pensioner of pensionerList">
+          <td>{{ pensioner.name }}</td>
+          <td>{{ pensioner.dateOfBirth | date }}</td>
+          <td>{{ pensioner.aadharNumber }}</td>
+          <td>{{ pensioner.panNumber }}</td>
+          <td>{{ pensioner.salaryEarned }}</td>
+          <td>{{ pensioner.allowances }}</td>
+          <td>{{ pensioner.pensionType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

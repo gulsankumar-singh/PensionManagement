@@ -1,0 +1,141 @@
+<!-- <div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <h3>Calculate Pension</h3>
+      <div class="card">
+        <form
+          class="form-card"
+          #pensionform="ngForm"
+          (ngSubmit)="onSubmit(pensionform)"
+        >
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Name<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                id="pensionerName"
+                name="pensionerName"
+                placeholder="Enter your pensioner name"
+                ngModel
+                required
+              />
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Aadhaar Number<span class="text-danger"> *</span></label
+              >
+              <input
+                type="number"
+                id="aadharNumber"
+                name="aadharNumber"
+                placeholder="Enter your Aadhaar Number"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >PAN Number<span class="text-danger"> *</span></label
+              >
+              <input
+                type="text"
+                id="panNumber"
+                name="panNumber"
+                placeholder="Enter your PAN Number"
+                ngModel
+                required
+              />
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3"
+                >Pension Type<span class="text-danger"> *</span></label
+              >
+              <select required ngModel name="pensionType">
+                <option selected disabled value="">Pension Type</option>
+                <option value="0">Self</option>
+                <option value="1">Family</option>
+              </select>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="form-group col-sm-6">
+              <button type="submit" class="btn-block btn-primary">
+                Calculate Pension
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+      <h3 class="text-center">Calculate Pension</h3>
+      <div class="card">
+        <label class="form-control-label"
+          >Aadhaar Number<span class="text-danger"> *</span></label
+        >
+        <form
+          class="form-card text-center"
+          #pensionform="ngForm"
+          (ngSubmit)="onSubmit(pensionform)"
+        >
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-9 flex-column d-flex">
+              <input
+                type="number"
+                id="aadharNumber"
+                name="aadharNumber"
+                placeholder="Enter your Aadhaar Number"
+                ngModel
+                required
+              />
+            </div>
+            <div class="form-group col-sm-3 flex-column d-flex">
+              <button type="submit" class="btn-block btn-primary">
+                Calculate Pension
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container card" *ngIf="isPensionCalculated">
+  <h1>Pension Detail</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Aadhaar Number</th>
+        <th scope="col">PAN</th>
+        <th scope="col">Salary Earned</th>
+        <th scope="col">Allowance</th>
+        <th scope="col">Pension Type</th>
+        <th scope="col">Pension Amount</th>
+        <th scope="col">Bank Charge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ pensionDetail.name }}</td>
+        <td>{{ pensionDetail.aadharNumber }}</td>
+        <td>{{ pensionDetail.panNumber }}</td>
+        <td>{{ pensionDetail.salaryEarned }}</td>
+        <td>{{ pensionDetail.allowances }}</td>
+        <td>{{ pensionDetail.pensionType }}</td>
+        <td>{{ pensionDetail.pensionAmount }}</td>
+        <td>{{ pensionDetail.bankServiceCharge }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
