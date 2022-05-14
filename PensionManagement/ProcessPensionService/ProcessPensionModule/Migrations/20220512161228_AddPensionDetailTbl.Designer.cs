@@ -9,8 +9,8 @@ using ProcessPensionModule.AppDbContext;
 namespace ProcessPensionModule.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220510151615_addPensionDetailTblToDb")]
-    partial class addPensionDetailTblToDb
+    [Migration("20220512161228_AddPensionDetailTbl")]
+    partial class AddPensionDetailTbl
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,9 @@ namespace ProcessPensionModule.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("BankServiceCharge")
+                        .HasColumnType("float");
+
                     b.Property<string>("BankType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -48,7 +51,7 @@ namespace ProcessPensionModule.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PAN")
+                    b.Property<string>("PanNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

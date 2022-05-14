@@ -27,7 +27,8 @@ namespace PensionerDetailModule.Utility.SwaggerConfig
             options.SwaggerDoc("v1", new OpenApiInfo()
             {
                 Title = "PensionerDetailModule API",
-                Version = "v1"
+                Version = "v1", 
+                Description = "This API will provide Pensioner Detail for Pension Management System "
             });
 
             //Adding support for JWT token in the Swagger

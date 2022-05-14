@@ -6,14 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PensionerDetailModule.AutoMapperConfig
+namespace PensionerDetailModule.Utility.AutoMapperConfig
 {
     public class MappingConfig : Profile
     {
         public MappingConfig()
         {
-            CreateMap<PensionerDetail, PensionerDetailDto>().ReverseMap();
-            CreateMap<BankDetail, BankDetailDto>().ReverseMap();
+            CreateMap<Pensioner, PensionerDto>().ReverseMap();
+            CreateMap<Bank, BankDto>().ReverseMap();
+            CreateMap<Pensioner, PensionerDetailDto>().ReverseMap();
         }
         
 

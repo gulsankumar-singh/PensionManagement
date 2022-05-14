@@ -17,5 +17,9 @@ namespace AuthenticationModule
         public const string KEY = "Key";
         public const string CONTENTTYPE = "application/json";
         public const int EXPIRESAFTER = 30;
+        public const string SUCCESS = "Success";
+        public const string ERROR = "Error";
+        public const string INVALIDDATAMSG = "Username or password is incorrect";
+        public const string LOGINSUCCESSMSG = "Login Successful";
     }
 }

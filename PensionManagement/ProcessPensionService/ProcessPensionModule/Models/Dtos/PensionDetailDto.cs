@@ -11,7 +11,7 @@ namespace ProcessPensionModule.Models.Dtos
         [Required]
         public string Name { get; set; }
         [Required]
-        public string PAN { get; set; }
+        public string PanNumber { get; set; }
         [Required]
         public long AadharNumber { get; set; }
         [Required]
@@ -20,13 +20,15 @@ namespace ProcessPensionModule.Models.Dtos
         public long Allowances { get; set; }
         [Required]
         public string PensionType { get; set; }
-        [Required]
-        public long AccountNumber { get; set; }
-        [Required]
-        public string BankName { get; set; }
-        [Required]
-        public string BankType { get; set; }
+        //[Required]
+        //public long AccountNumber { get; set; }
+        //[Required]
+        //public string BankName { get; set; }
+        //[Required]
+        //public string BankType { get; set; }
         [Required]
         public double PensionAmount { get; set; }
+        [Required]
+        public double BankServiceCharge { get; set; }
     }
 }

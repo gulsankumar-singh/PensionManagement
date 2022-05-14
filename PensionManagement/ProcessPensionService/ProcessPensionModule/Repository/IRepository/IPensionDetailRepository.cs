@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace ProcessPensionModule.Repository.IRepository
 {
+    /// <summary>
+    /// Repository for Pension Detail
+    /// </summary>
     public interface IPensionDetailRepository
     {
-        ICollection<PensionDetail> GetAllPensionDetail();
-
-        PensionDetail GetPensionDetail(int pensionId);
-        Task<bool> CreatePensionDetail(PensionDetail pensionDetail);
-        Task<bool> Save();
+        /// <summary>
+        /// Methods declaration for Adding 
+        /// Pension Detail
+        /// </summary>
+        /// <param name="pensionDetail"></param>
+        /// <returns></returns>
+        Task CreatePensionDetail(PensionDetail pensionDetail);
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProcessPensionModule.Models.ViewModels
+namespace PensionerDetailModule.Models.Dto
 {
-    public class PensionerVM
+    public class PensionerDto
     {
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -13,8 +13,8 @@ namespace ProcessPensionModule.Models.ViewModels
         public long AadharNumber { get; set; }
         public long SalaryEarned { get; set; }
         public long Allowances { get; set; }
-        public PensionTypes PensionType { get; set; }
-        public long AccountNumber { get; set; }
-        public BankDetailVM BankDetail { get; set; }
+        public string PensionType { get; set; }
+        //public long AccountNumber { get; set; }
+        //public BankDetailDto BankDetail { get; set; }
     }
 }

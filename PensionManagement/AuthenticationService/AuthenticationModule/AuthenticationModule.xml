@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AuthenticationModule</name>
+    </assembly>
+    <members>
+        <member name="M:AuthenticationModule.Controllers.AuthenticationController.GetAuthenticationToken(AuthenticationModule.Models.User)">
+            <summary>
+            Get JWT Authentication token for 
+            Pension Management System
+            </summary>
+            <param name="user"></param>
+            <returns>Token Detail</returns>
+        </member>
+        <member name="M:AuthenticationModule.Controllers.AuthenticationController.GenerateToken(System.String)">
+            <summary>
+            Helper method to generate the JWT token
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AuthenticationModule.Utility.SwaggerConfig.ConfigureSwaggerOptions">
+            <summary>
+            Class for Configuration of Swagger
+            </summary>
+        </member>
+        <member name="M:AuthenticationModule.Utility.SwaggerConfig.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            Method for Configuring swagger options
+            </summary>
+            <param name="options">Swagger options parameter</param>
+        </member>
+    </members>
+</doc>

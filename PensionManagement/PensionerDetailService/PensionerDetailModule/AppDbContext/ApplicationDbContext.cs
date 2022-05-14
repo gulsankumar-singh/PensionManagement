@@ -18,30 +18,30 @@ namespace PensionerDetailModule.AppDbContext
 
         }
 
-        public DbSet<PensionerDetail> PensionerDetails { get; set; }
-        public DbSet<BankDetail> BankDetails { get; set; }
+        public DbSet<Pensioner> Pensioners { get; set; }
+        public DbSet<Bank> Banks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PensionerDetail>()
-                .ToTable("PensionerDetails");
+            modelBuilder.Entity<Pensioner>()
+                .ToTable(StaticData.PENSIONERS);
 
-            modelBuilder.Entity<PensionerDetail>()
-                .ToTable("BankDetail");
+            modelBuilder.Entity<Bank>()
+                .ToTable(StaticData.BANKS);
 
-            modelBuilder.Entity<PensionerDetail>()
+            modelBuilder.Entity<Pensioner>()
                 .HasData(GetPensionerDataFromCsv());
 
-            modelBuilder.Entity<BankDetail>()
+            modelBuilder.Entity<Bank>()
                 .HasData(GetBankDataFromCsv());
         }
 
-        private static List<PensionerDetail> GetPensionerDataFromCsv()
+        private static List<Pensioner> GetPensionerDataFromCsv()
         {
-            List<PensionerDetail> pensionerDetails = null;
+            List<Pensioner> pensionerDetails = null;
             try
             {
-                pensionerDetails = new List<PensionerDetail>();
+                pensionerDetails = new List<Pensioner>();
                 using (StreamReader sr = new StreamReader(StaticData.PENSIONER_DATA_SET))
                 {
                     string line;
@@ -49,12 +49,12 @@ namespace PensionerDetailModule.AppDbContext
                     {
                         string[] values = line.Split(',');
 
-                        pensionerDetails.Add(new PensionerDetail()
+                        pensionerDetails.Add(new Pensioner()
                         {
                             Id = Convert.ToInt32(values[0]),
                             Name = values[1],
                             DateOfBirth = Convert.ToDateTime(values[2]),
-                            PAN = values[3],
+                            PanNumber = values[3],
                             AadharNumber = Convert.ToInt64(values[4]),
                             SalaryEarned = Convert.ToInt64(values[5]),
                             Allowances = Convert.ToInt64(values[6]),
@@ -72,12 +72,12 @@ namespace PensionerDetailModule.AppDbContext
             return pensionerDetails;
         }
 
-        private static List<BankDetail> GetBankDataFromCsv()
+        private static List<Bank> GetBankDataFromCsv()
         {
-            List<BankDetail> bankList = null;
+            List<Bank> bankList = null;
             try
             {
-                bankList = new List<BankDetail>();
+                bankList = new List<Bank>();
                 using (StreamReader sr = new StreamReader(StaticData.BANK_DATA_SET))
                 {
                     string line;
@@ -85,7 +85,7 @@ namespace PensionerDetailModule.AppDbContext
                     {
                         string[] values = line.Split(',');
 
-                        bankList.Add(new BankDetail()
+                        bankList.Add(new Bank()
                         {
                             Id = Convert.ToInt32(values[0]),
                             BankName = values[1],

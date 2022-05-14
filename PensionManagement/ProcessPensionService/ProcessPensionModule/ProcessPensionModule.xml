@@ -4,11 +4,11 @@
         <name>ProcessPensionModule</name>
     </assembly>
     <members>
-        <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.ProcessPension(System.Int64)">
+        <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.ProcessPension(ProcessPensionModule.Models.Dtos.ProcessPensionInput)">
             <summary>
             Process Pension based on the aadhar Number
             </summary>
-            <param name="aadharNumber"></param>
+            <param name="processPensionInput"></param>
             <returns>Pensioner Detail with Pension Amount</returns>
         </member>
         <member name="M:ProcessPensionModule.Controllers.ProcessPensionController.CalculatePensionAmount(ProcessPensionModule.Models.PensionAmountModel)">
@@ -18,11 +18,38 @@
             <param name="pensionAmountModel"></param>
             <returns></returns>
         </member>
+        <member name="T:ProcessPensionModule.Repository.IRepository.IPensionDetailRepository">
+            <summary>
+            Repository for Pension Detail
+            </summary>
+        </member>
+        <member name="M:ProcessPensionModule.Repository.IRepository.IPensionDetailRepository.CreatePensionDetail(ProcessPensionModule.Models.PensionDetail)">
+            <summary>
+            Methods declaration for Adding 
+            Pension Detail
+            </summary>
+            <param name="pensionDetail"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProcessPensionModule.Repository.PensionDetailRepository.CreatePensionDetail(ProcessPensionModule.Models.PensionDetail)">
+            <summary>
+            Add the Pension Detail to the database
+            </summary>
+            <param name="pensionDetail"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail">
+            <summary>
+            Class for calling Pensioner Detail Microservice
+            </summary>
+        </member>
         <member name="M:ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             GetPensionerDetail Constructor
             </summary>
             <param name="configuration"></param>
+            <param name="httpContextAccessor"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:ProcessPensionModule.Services.GetPensionerDetailQueries.GetPensionerDetail.GetPensionerDetailByAadhaar(System.Int64)">
             <summary>

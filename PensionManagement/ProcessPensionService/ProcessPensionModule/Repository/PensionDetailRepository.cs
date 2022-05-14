@@ -17,25 +17,16 @@ namespace ProcessPensionModule.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<bool> CreatePensionDetail(PensionDetail pensionDetail)
+        /// <summary>
+        /// Add the Pension Detail to the database
+        /// </summary>
+        /// <param name="pensionDetail"></param>
+        /// <returns></returns>
+        public async Task CreatePensionDetail(PensionDetail pensionDetail)
         {
             await _dbContext.PensionDetails.AddAsync(pensionDetail);
-            return await Save();
+            await _dbContext.SaveChangesAsync();
         }
 
-        public ICollection<PensionDetail> GetAllPensionDetail()
-        {
-            return _dbContext.PensionDetails.ToList();
-        }
-
-        public PensionDetail GetPensionDetail(int pensionId)
-        {
-            return _dbContext.PensionDetails.FirstOrDefault(p => p.Id == pensionId);
-        }
-
-        public async Task<bool> Save()
-        {
-            return await _dbContext.SaveChangesAsync() >= 0;
-        }
     }
 }

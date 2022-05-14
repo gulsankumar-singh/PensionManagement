@@ -2,17 +2,15 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
-using PensionerDetailModule.Common.Exceptions;
 
-namespace PensionerDetailModule.Common.Filters
+namespace PensionerDetailModule.Filters
 {
     public class ExceptionFilter : ExceptionFilterAttribute
     {
-        //private ILog _logger;
         private ILogger<ExceptionFilter> _logger;
         public ExceptionFilter(ILogger<ExceptionFilter> logger)
         {
-            _logger = logger;//LogManager.GetLogger(typeof(ExceptionFilter));
+            _logger = logger;
         }
 
       
@@ -20,10 +18,6 @@ namespace PensionerDetailModule.Common.Filters
         {
             var statusCode = HttpStatusCode.InternalServerError;
 
-            if (context.Exception is EntityNotFoundException)
-            {
-                statusCode = HttpStatusCode.NotFound;
-            }
 
             context.HttpContext.Response.ContentType = "application/json";
             context.HttpContext.Response.StatusCode = (int)statusCode;

@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PensionerDetailModule.Migrations
 {
-    public partial class addPensionerAndBankTblToDb : Migration
+    public partial class AddPensionerAndBankTbl : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BankDetails",
+                name: "Banks",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -18,18 +18,18 @@ namespace PensionerDetailModule.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BankDetails", x => x.Id);
+                    table.PrimaryKey("PK_Banks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "BankDetail",
+                name: "Pensioners",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PAN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PanNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AadharNumber = table.Column<long>(type: "bigint", nullable: false),
                     SalaryEarned = table.Column<long>(type: "bigint", nullable: false),
                     Allowances = table.Column<long>(type: "bigint", nullable: false),
@@ -39,17 +39,17 @@ namespace PensionerDetailModule.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BankDetail", x => x.Id);
+                    table.PrimaryKey("PK_Pensioners", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BankDetail_BankDetails_BankId",
+                        name: "FK_Pensioners_Banks_BankId",
                         column: x => x.BankId,
-                        principalTable: "BankDetails",
+                        principalTable: "Banks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "BankDetails",
+                table: "Banks",
                 columns: new[] { "Id", "BankName", "BankType" },
                 values: new object[,]
                 {
@@ -66,8 +66,8 @@ namespace PensionerDetailModule.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "BankDetail",
-                columns: new[] { "Id", "AadharNumber", "AccountNumber", "Allowances", "BankId", "DateOfBirth", "Name", "PAN", "PensionType", "SalaryEarned" },
+                table: "Pensioners",
+                columns: new[] { "Id", "AadharNumber", "AccountNumber", "Allowances", "BankId", "DateOfBirth", "Name", "PanNumber", "PensionType", "SalaryEarned" },
                 values: new object[,]
                 {
                     { 2, 854728326906L, 81730197274L, 26704L, 1, new DateTime(1991, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sourav", "KDRTI7666A", 0, 468418L },
@@ -93,18 +93,18 @@ namespace PensionerDetailModule.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BankDetail_BankId",
-                table: "BankDetail",
+                name: "IX_Pensioners_BankId",
+                table: "Pensioners",
                 column: "BankId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BankDetail");
+                name: "Pensioners");
 
             migrationBuilder.DropTable(
-                name: "BankDetails");
+                name: "Banks");
         }
     }
 }

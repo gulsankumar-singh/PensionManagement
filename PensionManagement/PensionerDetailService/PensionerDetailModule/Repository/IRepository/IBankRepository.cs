@@ -8,6 +8,6 @@ namespace PensionerDetailModule.Repository.IRepository
 {
     public interface IBankRepository
     {
-        List<BankDetail> GetAllBankAsync();
+        List<Bank> GetAllBankAsync();
     }
 }

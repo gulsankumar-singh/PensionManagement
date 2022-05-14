@@ -17,14 +17,14 @@ namespace PensionerDetailModule.Repository
         {
             _dbContext = dbContext;
         }
-        public List<PensionerDetail> GetAllPensioner()
+        public async Task<List<Pensioner>> GetAllPensioner()
         {
-            return _dbContext.PensionerDetails.Include(i => i.BankDetail).ToList();
+            return await _dbContext.Pensioners.Include(i => i.BankDetail).ToListAsync();
         }
 
-        public PensionerDetail GetPensionerByAadhaar(long aadharNumber)
+        public async Task<Pensioner> GetPensionerByAadhaar(long aadharNumber)
         {
-            return _dbContext.PensionerDetails.Include(i => i.BankDetail).FirstOrDefault(i => i.AadharNumber == aadharNumber);
+            return await _dbContext.Pensioners.Include(i => i.BankDetail).FirstOrDefaultAsync(i => i.AadharNumber == aadharNumber);
         }
     }
 }

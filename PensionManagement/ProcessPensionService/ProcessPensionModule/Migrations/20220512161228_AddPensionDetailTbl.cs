@@ -2,7 +2,7 @@
 
 namespace ProcessPensionModule.Migrations
 {
-    public partial class addPensionDetailTblToDb : Migration
+    public partial class AddPensionDetailTbl : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace ProcessPensionModule.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PAN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PanNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AadharNumber = table.Column<long>(type: "bigint", nullable: false),
                     SalaryEarned = table.Column<long>(type: "bigint", nullable: false),
                     Allowances = table.Column<long>(type: "bigint", nullable: false),
@@ -21,8 +21,9 @@ namespace ProcessPensionModule.Migrations
                     AccountNumber = table.Column<long>(type: "bigint", nullable: false),
                     PensionAmount = table.Column<double>(type: "float", nullable: false),
                     BankName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TransectionId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BankType = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    BankType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BankServiceCharge = table.Column<double>(type: "float", nullable: false),
+                    TransectionId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

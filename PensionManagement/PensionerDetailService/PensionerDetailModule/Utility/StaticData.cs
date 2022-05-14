@@ -16,6 +16,8 @@ namespace PensionerDetailModule.Utility
         public const string AUDIENCE = "Audience";
         public const string KEY = "Key";
         public const string CONTENTTYPE = "application/json";
+        public const string PENSIONERS = "Pensioners";
+        public const string BANKS = "Banks";
 
     }
 }

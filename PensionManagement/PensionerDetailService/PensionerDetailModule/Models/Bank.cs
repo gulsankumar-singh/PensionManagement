@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace PensionerDetailModule.Models
 {
-    public class BankDetailDto
+    public class Bank
     {
+        [Key]
+        public int Id { get; set; }
+        [Required]
         public string BankName { get; set; }
+        [Required]
         public BankTypes BankType { get; set; }
     }
+
+    public enum BankTypes { Public, Private };
+
 
 }

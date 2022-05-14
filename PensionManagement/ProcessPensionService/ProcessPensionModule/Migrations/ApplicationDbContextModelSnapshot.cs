@@ -38,6 +38,9 @@ namespace ProcessPensionModule.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("BankServiceCharge")
+                        .HasColumnType("float");
+
                     b.Property<string>("BankType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -46,7 +49,7 @@ namespace ProcessPensionModule.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PAN")
+                    b.Property<string>("PanNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

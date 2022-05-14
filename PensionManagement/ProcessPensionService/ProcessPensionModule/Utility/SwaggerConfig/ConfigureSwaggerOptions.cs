@@ -27,7 +27,8 @@ namespace ProcessPensionModule.Utility.SwaggerConfig
             options.SwaggerDoc("v1", new OpenApiInfo()
             {
                 Title = "ProcessPensionModule API",
-                Version = "v1"
+                Version = "v1",
+                Description ="This API Will Process The Pension for Registered User \n After Calculating The Pension Amount For Pension Management System"
             });
 
             //Adding support for JWT token in the Swagger

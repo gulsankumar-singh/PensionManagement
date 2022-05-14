@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace ProcessPensionModule.Services.GetPensionerDetailQueries
 {
+    /// <summary>
+    /// Class for calling Pensioner Detail Microservice
+    /// </summary>
     public class GetPensionerDetail : IGetPensionerDetail
     {
         private string PensionerDetailAPIURL { get; set; }
@@ -24,6 +27,8 @@ namespace ProcessPensionModule.Services.GetPensionerDetailQueries
         /// GetPensionerDetail Constructor
         /// </summary>
         /// <param name="configuration"></param>
+        /// <param name="httpContextAccessor"></param>
+        /// <param name="logger"></param>
         public GetPensionerDetail(IConfiguration configuration, ILogger<GetPensionerDetail> logger, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;

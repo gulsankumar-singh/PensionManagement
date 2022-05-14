@@ -36,24 +36,27 @@ namespace ProcessPensionModule.Controllers
         /// <summary>
         /// Process Pension based on the aadhar Number
         /// </summary>
-        /// <param name="aadharNumber"></param>
+        /// <param name="processPensionInput"></param>
         /// <returns>Pensioner Detail with Pension Amount</returns>
         [Route("ProcessPension")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(APIResponse))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<APIResponse>> ProcessPension(long aadharNumber)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<APIResponse>> ProcessPension(ProcessPensionInput processPensionInput)
         {
+
             _logger.LogInformation("ProcessPension method execution started...");
+
             APIResponse apiResponse = new APIResponse();
-            PensionerVM pensionerInfo = await _getPensionerDetail.GetPensionerDetailByAadhaar(aadharNumber);
+            PensionerVM pensionerInfo = await _getPensionerDetail.GetPensionerDetailByAadhaar(processPensionInput.AadhaarNumber);
             //if pensioner not found return null
             if(pensionerInfo == null)
             {
                 apiResponse.Status = "Error";
-                apiResponse.Message = "No Record Found Please enter valid aadhaar number";
-                return apiResponse;
+                apiResponse.Message = "Invalid pensioner detail provided, please provide valid detail";
+                return NotFound(apiResponse);
             }
 
             PensionAmountModel amountModel = new PensionAmountModel
@@ -65,11 +68,13 @@ namespace ProcessPensionModule.Controllers
             };
 
             double pensionAmount = CalculatePensionAmount(amountModel);
+           
+            int serviceCharge = pensionerInfo.BankDetail.BankType == 0 ? 500 : 550;
 
             PensionDetail pensionerDetail = new PensionDetail
             {
                 Name = pensionerInfo.Name,
-                PAN = pensionerInfo.PAN,
+                PanNumber = pensionerInfo.PanNumber,
                 AadharNumber = pensionerInfo.AadharNumber,
                 SalaryEarned = pensionerInfo.SalaryEarned,
                 Allowances = pensionerInfo.Allowances,
@@ -79,9 +84,11 @@ namespace ProcessPensionModule.Controllers
                 AccountNumber = pensionerInfo.AccountNumber,
                 BankName = pensionerInfo.BankDetail.BankName,
                 TransectionId = Guid.NewGuid().ToString(),
-            };
+                BankServiceCharge = serviceCharge
+        };
             
             await _pensionDetailRepository.CreatePensionDetail(pensionerDetail);
+
             PensionDetailDto pensionDto = _mapper.Map<PensionDetailDto>(pensionerDetail);
             apiResponse.Status = "Success";
             apiResponse.Message = "Pension Calculated Successfully!!";

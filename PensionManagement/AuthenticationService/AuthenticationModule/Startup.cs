@@ -1,4 +1,5 @@
-using AuthenticationModule.Common.Filters;
+using AuthenticationModule.Filters;
+using AuthenticationModule.Utility.SwaggerConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +32,17 @@ namespace AuthenticationModule
         {
 
             services.AddControllers(options => options.Filters.Add(typeof(ExceptionFilter)));
-            services.AddSwaggerGen(c =>
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            services.AddSwaggerGen();
+
+            services.AddCors(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuthenticationModule", Version = "v1" });
+                options.AddPolicy("CorsPolicy", builder =>  builder
+                .SetIsOriginAllowed((host) => true)
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .AllowAnyHeader()
+                );
             });
         }
 
@@ -48,7 +59,7 @@ namespace AuthenticationModule
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

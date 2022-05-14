@@ -9,12 +9,12 @@ namespace PensionerDetailModule.Models.Dto
     {
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string PAN { get; set; }
+        public string PanNumber { get; set; }
         public long AadharNumber { get; set; }
         public long SalaryEarned { get; set; }
         public long Allowances { get; set; }
         public PensionTypes PensionType { get; set; }
         public long AccountNumber { get; set; }
-        public BankDetailDto BankDetail { get; set; }
+        public BankDto BankDetail { get; set; }
     }
 }

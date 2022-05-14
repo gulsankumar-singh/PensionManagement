@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PensionerDetailModule.Models
 {
-    public class PensionerDetail
+    public class Pensioner
     {
         [Key]
         public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace PensionerDetailModule.Models
         [Required]
         public DateTime DateOfBirth { get; set; }
         [Required]
-        public string PAN { get; set; }
+        public string PanNumber { get; set; }
         [Required]
         public long AadharNumber { get; set; }
         [Required]
@@ -30,7 +30,7 @@ namespace PensionerDetailModule.Models
         public long AccountNumber { get; set; }
         public int BankId { get; set; }
         [ForeignKey("BankId")]
-        public BankDetail BankDetail { get; set; }
+        public Bank BankDetail { get; set; }
     }
     public enum PensionTypes { Self, Family };
 }

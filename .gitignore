@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PensionManagement/AuthenticationService/AuthenticationModule/bin/Debug/net5.0
+/PensionManagement/AuthenticationService/AuthenticationModule/obj/Debug/net5.0
+/PensionManagement/PensionerDetailService/PensionerDetailModule/bin/Debug/net5.0
+/PensionManagement/PensionerDetailService/PensionerDetailModule/obj
+/PensionManagement/AuthenticationService/AuthenticationModule/obj
+/PensionManagement/ProcessPensionService/ProcessPensionModule/bin/Debug/net5.0
+/PensionManagement/ProcessPensionService/ProcessPensionModule/obj

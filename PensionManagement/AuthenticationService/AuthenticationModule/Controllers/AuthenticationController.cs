@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AuthenticationModule.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -25,29 +26,43 @@ namespace AuthenticationModule.Controllers
         }
 
         /// <summary>
-        /// Get Authentication token
+        /// Get JWT Authentication token for 
+        /// Pension Management System
         /// </summary>
         /// <param name="user"></param>
         /// <returns>Token Detail</returns>
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenDetail))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(APIResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<TokenDetail> GetAuthenticationToken([FromBody] User user)
+        public ActionResult<APIResponse> GetAuthenticationToken([FromBody] User user)
         {
-            
+            APIResponse response = new APIResponse();
             _logger.LogInformation("GetAuthenticationToken method started...");
 
-            if(user.UserName != StaticData.USER || user.Password != StaticData.PASSWORD)
-                return BadRequest(new { message = "Username or password is incorrect" });
+            if (user.UserName != StaticData.USER || user.Password != StaticData.PASSWORD)
+            {
+                response.Status = StaticData.ERROR;
+                response.Message = StaticData.INVALIDDATAMSG;
+                response.Response = null;
+                return NotFound(response);
+            }
 
             TokenDetail token = GenerateToken(user.UserName);
 
-            return Ok(token);
+            response.Status = StaticData.SUCCESS;
+            response.Message = StaticData.LOGINSUCCESSMSG;
+            response.Response = token;
+            return Ok(response);
 
         }
 
+        /// <summary>
+        /// Helper method to generate the JWT token
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         private TokenDetail GenerateToken(string userName)
         {
            

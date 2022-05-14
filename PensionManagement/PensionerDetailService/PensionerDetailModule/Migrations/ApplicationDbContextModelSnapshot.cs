@@ -19,7 +19,7 @@ namespace PensionerDetailModule.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PensionerDetailModule.Models.BankDetail", b =>
+            modelBuilder.Entity("PensionerDetailModule.Models.Bank", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace PensionerDetailModule.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BankDetails");
+                    b.ToTable("Banks");
 
                     b.HasData(
                         new
@@ -100,7 +100,7 @@ namespace PensionerDetailModule.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PensionerDetailModule.Models.PensionerDetail", b =>
+            modelBuilder.Entity("PensionerDetailModule.Models.Pensioner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,7 +126,7 @@ namespace PensionerDetailModule.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PAN")
+                    b.Property<string>("PanNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -140,7 +140,7 @@ namespace PensionerDetailModule.Migrations
 
                     b.HasIndex("BankId");
 
-                    b.ToTable("BankDetail");
+                    b.ToTable("Pensioners");
 
                     b.HasData(
                         new
@@ -152,7 +152,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 5,
                             DateOfBirth = new DateTime(2000, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ajay",
-                            PAN = "KSMOC9374L",
+                            PanNumber = "KSMOC9374L",
                             PensionType = 0,
                             SalaryEarned = 436986L
                         },
@@ -165,7 +165,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 1,
                             DateOfBirth = new DateTime(1991, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sourav",
-                            PAN = "KDRTI7666A",
+                            PanNumber = "KDRTI7666A",
                             PensionType = 0,
                             SalaryEarned = 468418L
                         },
@@ -178,7 +178,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 9,
                             DateOfBirth = new DateTime(1974, 10, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sameer",
-                            PAN = "ZWKOF2689R",
+                            PanNumber = "ZWKOF2689R",
                             PensionType = 1,
                             SalaryEarned = 865912L
                         },
@@ -191,7 +191,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 5,
                             DateOfBirth = new DateTime(1980, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Vivaan",
-                            PAN = "IXSUT5186S",
+                            PanNumber = "IXSUT5186S",
                             PensionType = 0,
                             SalaryEarned = 925642L
                         },
@@ -204,7 +204,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 7,
                             DateOfBirth = new DateTime(2002, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Saket",
-                            PAN = "UOYCV0783O",
+                            PanNumber = "UOYCV0783O",
                             PensionType = 0,
                             SalaryEarned = 885577L
                         },
@@ -217,7 +217,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 4,
                             DateOfBirth = new DateTime(1991, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Rahul",
-                            PAN = "GPPVI6213L",
+                            PanNumber = "GPPVI6213L",
                             PensionType = 1,
                             SalaryEarned = 619564L
                         },
@@ -230,7 +230,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 3,
                             DateOfBirth = new DateTime(1957, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Rohan",
-                            PAN = "BXLEY3454O",
+                            PanNumber = "BXLEY3454O",
                             PensionType = 1,
                             SalaryEarned = 593845L
                         },
@@ -243,7 +243,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 4,
                             DateOfBirth = new DateTime(1987, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pragya",
-                            PAN = "GOWUN8949C",
+                            PanNumber = "GOWUN8949C",
                             PensionType = 0,
                             SalaryEarned = 461227L
                         },
@@ -256,7 +256,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 10,
                             DateOfBirth = new DateTime(1994, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kunal",
-                            PAN = "QKSXL5968C",
+                            PanNumber = "QKSXL5968C",
                             PensionType = 0,
                             SalaryEarned = 520820L
                         },
@@ -269,7 +269,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 8,
                             DateOfBirth = new DateTime(1995, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Anjali",
-                            PAN = "VOVUQ4952B",
+                            PanNumber = "VOVUQ4952B",
                             PensionType = 1,
                             SalaryEarned = 593084L
                         },
@@ -282,7 +282,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 2,
                             DateOfBirth = new DateTime(1994, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ranjeet",
-                            PAN = "BIOCM9234K",
+                            PanNumber = "BIOCM9234K",
                             PensionType = 1,
                             SalaryEarned = 752833L
                         },
@@ -295,7 +295,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 1,
                             DateOfBirth = new DateTime(1957, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Shubham",
-                            PAN = "AJNZV5132D",
+                            PanNumber = "AJNZV5132D",
                             PensionType = 1,
                             SalaryEarned = 507340L
                         },
@@ -308,7 +308,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 5,
                             DateOfBirth = new DateTime(1984, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sunidhi",
-                            PAN = "OYGXW4443E",
+                            PanNumber = "OYGXW4443E",
                             PensionType = 0,
                             SalaryEarned = 866978L
                         },
@@ -321,7 +321,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 3,
                             DateOfBirth = new DateTime(1963, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Rohit",
-                            PAN = "YIUGX7931I",
+                            PanNumber = "YIUGX7931I",
                             PensionType = 0,
                             SalaryEarned = 810046L
                         },
@@ -334,7 +334,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 6,
                             DateOfBirth = new DateTime(1976, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aditya",
-                            PAN = "UNVHI8166X",
+                            PanNumber = "UNVHI8166X",
                             PensionType = 0,
                             SalaryEarned = 710003L
                         },
@@ -347,7 +347,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 9,
                             DateOfBirth = new DateTime(1996, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Gulshan",
-                            PAN = "ZEOSA8100V",
+                            PanNumber = "ZEOSA8100V",
                             PensionType = 1,
                             SalaryEarned = 869460L
                         },
@@ -360,7 +360,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 1,
                             DateOfBirth = new DateTime(1978, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ram",
-                            PAN = "YOLLZ3272S",
+                            PanNumber = "YOLLZ3272S",
                             PensionType = 1,
                             SalaryEarned = 606992L
                         },
@@ -373,7 +373,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 2,
                             DateOfBirth = new DateTime(1975, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ujjwal",
-                            PAN = "QAQBL8395S",
+                            PanNumber = "QAQBL8395S",
                             PensionType = 0,
                             SalaryEarned = 575598L
                         },
@@ -386,7 +386,7 @@ namespace PensionerDetailModule.Migrations
                             BankId = 8,
                             DateOfBirth = new DateTime(1999, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Akash",
-                            PAN = "YEBSQ6580R",
+                            PanNumber = "YEBSQ6580R",
                             PensionType = 0,
                             SalaryEarned = 629579L
                         },
@@ -399,15 +399,15 @@ namespace PensionerDetailModule.Migrations
                             BankId = 9,
                             DateOfBirth = new DateTime(1991, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sunita",
-                            PAN = "OKOKS6038K",
+                            PanNumber = "OKOKS6038K",
                             PensionType = 1,
                             SalaryEarned = 871959L
                         });
                 });
 
-            modelBuilder.Entity("PensionerDetailModule.Models.PensionerDetail", b =>
+            modelBuilder.Entity("PensionerDetailModule.Models.Pensioner", b =>
                 {
-                    b.HasOne("PensionerDetailModule.Models.BankDetail", "BankDetail")
+                    b.HasOne("PensionerDetailModule.Models.Bank", "BankDetail")
                         .WithMany()
                         .HasForeignKey("BankId")
                         .OnDelete(DeleteBehavior.Cascade)

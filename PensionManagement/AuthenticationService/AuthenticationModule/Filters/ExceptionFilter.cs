@@ -3,15 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 
-namespace ProcessPensionModule.Common.Filters
+namespace AuthenticationModule.Filters
 {
     public class ExceptionFilter : ExceptionFilterAttribute
     {
-        //private ILog _logger;
         private ILogger<ExceptionFilter> _logger;
         public ExceptionFilter(ILogger<ExceptionFilter> logger)
         {
-            _logger = logger;//LogManager.GetLogger(typeof(ExceptionFilter));
+            _logger = logger;
         }
 
       
@@ -19,7 +18,7 @@ namespace ProcessPensionModule.Common.Filters
         {
             var statusCode = HttpStatusCode.InternalServerError;
 
-            context.HttpContext.Response.ContentType = "application/json";
+            context.HttpContext.Response.ContentType = StaticData.CONTENTTYPE;
             context.HttpContext.Response.StatusCode = (int)statusCode;
             context.Result = new JsonResult(new
             {

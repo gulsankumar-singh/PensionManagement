@@ -2,7 +2,7 @@
 using ProcessPensionModule.Models;
 using ProcessPensionModule.Models.Dtos;
 
-namespace ProcessPensionModule.AutoMapperConfig
+namespace ProcessPensionModule.Utility.AutoMapperConfig
 {
     public class MappingConfig : Profile
     {

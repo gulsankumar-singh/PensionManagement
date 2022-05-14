@@ -13,7 +13,7 @@ namespace ProcessPensionModule.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public string PAN { get; set; }
+        public string PanNumber { get; set; }
         [Required]
         public long AadharNumber { get; set; }
         [Required]
@@ -29,9 +29,13 @@ namespace ProcessPensionModule.Models
         [Required]
         public string BankName { get; set; }
         [Required]
-        public string TransectionId { get; set; }
-        [Required]
         public string BankType { get; set; }
+
+        [Required]
+        public double BankServiceCharge { get; set; }
+
+        [Required]
+        public string TransectionId { get; set; }
     }
 
     public enum PensionTypes { Self, Family };

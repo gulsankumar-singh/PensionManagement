@@ -16,9 +16,9 @@ namespace PensionerDetailModule.Repository
         {
             _dbContext = dbContext;
         }
-        public List<BankDetail> GetAllBankAsync()
+        public List<Bank> GetAllBankAsync()
         {
-            return _dbContext.BankDetails.ToList();
+            return _dbContext.Banks.ToList();
         }
     }
 }

@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PensionerDetailModule.Common.Exceptions;
 using PensionerDetailModule.Models;
 using PensionerDetailModule.Models.Dto;
 using PensionerDetailModule.Repository.IRepository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PensionerDetailModule.API.Controllers
 {
@@ -35,10 +36,22 @@ namespace PensionerDetailModule.API.Controllers
         /// <returns></returns>
         [Route("GetAllPensioner")]
         [HttpGet]
-        public List<PensionerDetail> GetPensionerList()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PensionerDto>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<List<PensionerDto>>> GetPensionerList()
         {
             _logger.LogInformation("Calling GetPensionerList method");
-            return _pensionerRepository.GetAllPensioner();
+
+            var pensionerList = await _pensionerRepository.GetAllPensioner();
+            var pensionerDTO = new List<PensionerDto>();
+
+            foreach (var item in pensionerList)
+            {
+                pensionerDTO.Add(_mapper.Map<PensionerDto>(item));
+            }
+
+            return Ok(pensionerDTO);
         }
 
 
@@ -52,13 +65,13 @@ namespace PensionerDetailModule.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PensionerDetailDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public ActionResult<PensionerDetailDto> PensionerDetailByAadhaar(long aadhaarNumber)
+        public async Task<ActionResult<PensionerDetailDto>> PensionerDetailByAadhaar(long aadhaarNumber)
         {
             _logger.LogInformation("Starting PensionerDetailByAadhaar method.....");
-            PensionerDetail pensioner = _pensionerRepository.GetPensionerByAadhaar(aadhaarNumber);
+            Pensioner pensioner = await _pensionerRepository.GetPensionerByAadhaar(aadhaarNumber);
 
             if (pensioner == null)
-                throw new EntityNotFoundException();
+                return NotFound(new { message = "No Record Found"});
 
             PensionerDetailDto pensionerDto = _mapper.Map<PensionerDetailDto>(pensioner);
 

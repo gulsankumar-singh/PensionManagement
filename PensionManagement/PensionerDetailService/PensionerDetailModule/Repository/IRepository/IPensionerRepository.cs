@@ -8,7 +8,7 @@ namespace PensionerDetailModule.Repository.IRepository
 {
     public interface IPensionerRepository
     {
-        List<PensionerDetail> GetAllPensioner();
-        PensionerDetail GetPensionerByAadhaar(long aadharNumber);
+        Task<List<Pensioner>> GetAllPensioner();
+        Task<Pensioner> GetPensionerByAadhaar(long aadharNumber);
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuthenticationModule
+namespace AuthenticationModule.Models
 {
     public class User
     {
