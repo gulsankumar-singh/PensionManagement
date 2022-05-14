@@ -57,7 +57,7 @@ stages:
         displayName: Deploy
         pool:
           vmImage: $(vmImageName)
-        environment: "PensionManagement.default"
+        environment: "PensionManagement-1034.default"
         strategy:
           runOnce:
             deploy:
