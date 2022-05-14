@@ -15,7 +15,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: "2f5940eb-05b8-47a1-a196-32a5be994174"
+  dockerRegistryServiceConnection: "3fc091c7-4da1-455d-8dab-24ac4c7a526d"
   imageRepository: "authenticationmodule"
   containerRegistry: "acrpensionmanagement.azurecr.io"
   dockerfilePath: "PensionManagement/AuthenticationService/AuthenticationModule/Dockerfile"
