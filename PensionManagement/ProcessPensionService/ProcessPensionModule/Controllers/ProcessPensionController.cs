@@ -54,8 +54,8 @@ namespace ProcessPensionModule.Controllers
             //if pensioner not found return null
             if(pensionerInfo == null)
             {
-                apiResponse.Status = "Error";
-                apiResponse.Message = "Invalid pensioner detail provided, please provide valid detail";
+                apiResponse.Status = StaticData.Error;
+                apiResponse.Message = StaticData.PensionerNotFound;
                 return NotFound(apiResponse);
             }
 
@@ -90,8 +90,8 @@ namespace ProcessPensionModule.Controllers
             await _pensionDetailRepository.CreatePensionDetail(pensionerDetail);
 
             PensionDetailDto pensionDto = _mapper.Map<PensionDetailDto>(pensionerDetail);
-            apiResponse.Status = "Success";
-            apiResponse.Message = "Pension Calculated Successfully!!";
+            apiResponse.Status = StaticData.Success;
+            apiResponse.Message = StaticData.PensionCalculated;
             apiResponse.Response = pensionDto;
             return Ok(apiResponse); 
         }

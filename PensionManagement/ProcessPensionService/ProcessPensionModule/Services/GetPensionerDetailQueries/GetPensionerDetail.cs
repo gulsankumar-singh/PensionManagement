@@ -32,7 +32,7 @@ namespace ProcessPensionModule.Services.GetPensionerDetailQueries
         public GetPensionerDetail(IConfiguration configuration, ILogger<GetPensionerDetail> logger, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
-            PensionerDetailAPIURL = configuration.GetSection(StaticData.PENSIONER_DETAIL_API_URL).Value;
+            PensionerDetailAPIURL = configuration.GetSection(StaticData.PensionerDetailApiUrl).Value;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -48,14 +48,14 @@ namespace ProcessPensionModule.Services.GetPensionerDetailQueries
             {
                 HttpContext httpContext = _httpContextAccessor.HttpContext;
                 var authenticationInfo = await httpContext.AuthenticateAsync();
-                string token = authenticationInfo.Properties.GetTokenValue(StaticData.ACCESS_TOKEN);
+                string token = authenticationInfo.Properties.GetTokenValue(StaticData.AccessToken);
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(PensionerDetailAPIURL);
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(StaticData.CONTENT_TYPE));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(StaticData.ContentType));
 
-                    client.DefaultRequestHeaders.Add(StaticData.AUTHORIZATION, StaticData.BEARER + token);
-                    HttpResponseMessage responseMessage = await client.GetAsync(StaticData.GET_PENSIONER_DETAIL + aadhaarNumber);
+                    client.DefaultRequestHeaders.Add(StaticData.Authorization, StaticData.Bearer + token);
+                    HttpResponseMessage responseMessage = await client.GetAsync(StaticData.GetPensionerDetail + aadhaarNumber);
                     if (responseMessage.IsSuccessStatusCode)
                     {
                         var result = responseMessage.Content.ReadAsStringAsync().Result;
