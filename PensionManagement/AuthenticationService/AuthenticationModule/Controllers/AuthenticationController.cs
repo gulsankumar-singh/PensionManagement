@@ -41,18 +41,18 @@ namespace AuthenticationModule.Controllers
             APIResponse response = new APIResponse();
             _logger.LogInformation("GetAuthenticationToken method started...");
 
-            if (user.UserName != StaticData.USER || user.Password != StaticData.PASSWORD)
+            if (user.UserName != StaticData.UserName || user.Password != StaticData.Password)
             {
-                response.Status = StaticData.ERROR;
-                response.Message = StaticData.INVALIDDATAMSG;
+                response.Status = StaticData.Error;
+                response.Message = StaticData.InvalidDataMsg;
                 response.Response = null;
-                return NotFound(response);
+                return BadRequest(response);
             }
 
             TokenDetail token = GenerateToken(user.UserName);
 
-            response.Status = StaticData.SUCCESS;
-            response.Message = StaticData.LOGINSUCCESSMSG;
+            response.Status = StaticData.Success;
+            response.Message = StaticData.TokenGenerated;
             response.Response = token;
             return Ok(response);
 
@@ -67,20 +67,20 @@ namespace AuthenticationModule.Controllers
         {
            
             var claims = new[] {
-                    new Claim(JwtRegisteredClaimNames.Sub, _configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.SUBJECT).Value),
+                    new Claim(JwtRegisteredClaimNames.Sub, _configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Subject).Value),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                     new Claim(ClaimTypes.Name, userName)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.KEY).Value));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Key).Value));
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
             var token = new JwtSecurityToken(
-                    _configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.ISSUER).Value,
-                        _configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.AUDIENCE).Value,
+                    _configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Issuer).Value,
+                        _configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Audience).Value,
                     claims,
-                    expires: DateTime.UtcNow.AddMinutes(StaticData.EXPIRESAFTER),
+                    expires: DateTime.UtcNow.AddMinutes(StaticData.ExpiryTime),
                     signingCredentials: signIn);
             var tokenHandler = new JwtSecurityTokenHandler();
 

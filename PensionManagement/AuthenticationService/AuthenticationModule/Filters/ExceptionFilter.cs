@@ -18,7 +18,7 @@ namespace AuthenticationModule.Filters
         {
             var statusCode = HttpStatusCode.InternalServerError;
 
-            context.HttpContext.Response.ContentType = StaticData.CONTENTTYPE;
+            context.HttpContext.Response.ContentType = StaticData.ContentType;
             context.HttpContext.Response.StatusCode = (int)statusCode;
             context.Result = new JsonResult(new
             {
