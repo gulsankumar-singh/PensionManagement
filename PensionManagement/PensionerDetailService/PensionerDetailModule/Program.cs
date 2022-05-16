@@ -25,7 +25,7 @@ namespace PensionerDetailModule
                 }).ConfigureLogging(builder =>
                 {
                     builder.SetMinimumLevel(LogLevel.Trace);
-                    builder.AddLog4Net(StaticData.LOG_CONFIG_FILE);
+                    builder.AddLog4Net(StaticData.LogConfigFile);
                 });
     }
 }

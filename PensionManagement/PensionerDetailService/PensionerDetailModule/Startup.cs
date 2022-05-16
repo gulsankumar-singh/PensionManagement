@@ -52,11 +52,13 @@ namespace PensionerDetailModule
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.KEY).Value)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Key).Value)),
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.ISSUER).Value,
-                    ValidAudience = Configuration.GetSection(StaticData.JWT_DETAIL).GetSection(StaticData.AUDIENCE).Value
+                    ValidIssuer = Configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Issuer).Value,
+                    ValidAudience = Configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Audience).Value,
+                    ClockSkew = System.TimeSpan.Zero,
+                    ValidateLifetime = true
                 };
             });
 

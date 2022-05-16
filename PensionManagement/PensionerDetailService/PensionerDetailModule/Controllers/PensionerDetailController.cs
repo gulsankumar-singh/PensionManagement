@@ -71,7 +71,7 @@ namespace PensionerDetailModule.API.Controllers
             Pensioner pensioner = await _pensionerRepository.GetPensionerByAadhaar(aadhaarNumber);
 
             if (pensioner == null)
-                return NotFound(new { message = "No Record Found"});
+                return NotFound(new { message = "Pensioner not found"});
 
             PensionerDetailDto pensionerDto = _mapper.Map<PensionerDetailDto>(pensioner);
 

@@ -12,10 +12,8 @@ namespace PensionerDetailModule.AppDbContext
 {
     public class ApplicationDbContext : DbContext
     {
-
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<Pensioner> Pensioners { get; set; }
@@ -24,10 +22,10 @@ namespace PensionerDetailModule.AppDbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pensioner>()
-                .ToTable(StaticData.PENSIONERS);
+                .ToTable(StaticData.Pensioners);
 
             modelBuilder.Entity<Bank>()
-                .ToTable(StaticData.BANKS);
+                .ToTable(StaticData.Banks);
 
             modelBuilder.Entity<Pensioner>()
                 .HasData(GetPensionerDataFromCsv());
@@ -42,7 +40,7 @@ namespace PensionerDetailModule.AppDbContext
             try
             {
                 pensionerDetails = new List<Pensioner>();
-                using (StreamReader sr = new StreamReader(StaticData.PENSIONER_DATA_SET))
+                using (StreamReader sr = new StreamReader(StaticData.PensionerDataSet))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
@@ -67,7 +65,7 @@ namespace PensionerDetailModule.AppDbContext
             }
             catch (Exception ex)
             {
-                throw;
+                 throw;
             }
             return pensionerDetails;
         }
@@ -78,7 +76,7 @@ namespace PensionerDetailModule.AppDbContext
             try
             {
                 bankList = new List<Bank>();
-                using (StreamReader sr = new StreamReader(StaticData.BANK_DATA_SET))
+                using (StreamReader sr = new StreamReader(StaticData.BankDataSet))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
