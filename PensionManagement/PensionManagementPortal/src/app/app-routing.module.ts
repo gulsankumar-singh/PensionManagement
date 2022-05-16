@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from './auth/auth.guard';
-import { LoginComponent } from './auth/components/login.component';
-import { CalculatePensionComponent } from './calculate-pension/calculate-pension.component';
-import { HomeComponent } from './home/home.component';
-import { PensionerListComponent } from './pensioner-list/pensioner-list.component';
+import { CalculatePensionComponent } from './components/calculate-pension/calculate-pension.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { SessionExpiredComponent } from './shared/components/session-expired/session-expired.component';
+import { AuthGuardService } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,14 +17,21 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'pensionerlist',
-    component: PensionerListComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
     path: 'calculatepension',
     component: CalculatePensionComponent,
     canActivate: [AuthGuardService],
+  },
+  {
+    path: 'not-found',
+    component: PageNotFoundComponent,
+  },
+  {
+    path: 'session-expired',
+    component: SessionExpiredComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found',
   },
 ];
 

@@ -3,26 +3,27 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/components/login.component';
-import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PensionerListComponent } from './pensioner-list/pensioner-list.component';
-import { CalculatePensionComponent } from './calculate-pension/calculate-pension.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AuthInterceptorService } from './auth/auth-interceptor.sevices';
-import { HomeComponent } from './home/home.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+import { CalculatePensionComponent } from './components/calculate-pension/calculate-pension.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthInterceptorService } from './shared/interceptor/auth-interceptor.sevices';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { SessionExpiredComponent } from './shared/components/session-expired/session-expired.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LoadingSpinnerComponent,
-    PensionerListComponent,
     CalculatePensionComponent,
     NavbarComponent,
+    PageNotFoundComponent,
+    SessionExpiredComponent,
     HomeComponent,
   ],
   imports: [
@@ -32,6 +33,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule,
   ],
   providers: [
     {

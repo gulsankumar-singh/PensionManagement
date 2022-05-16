@@ -1,0 +1,59 @@
+<div class="container-fluid py-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7">
+      <div class="card">
+        <div class="col-xl-12">
+          <div class="form-area">
+            <div class="form-content col-xl-6">
+              <img
+                src="../../../assets/images/login-image.jpg"
+                class="login-img"
+              />
+            </div>
+            <div class="form-input col-xl-6">
+              <h2 class="login-text">Login</h2>
+              <div class="alert alert-danger" role="alert" *ngIf="error">
+                <p>{{ error }}</p>
+              </div>
+
+              <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="name"
+                    name="userName"
+                    placeholder="User Name"
+                    required
+                    ngModel
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    ngModel
+                  />
+                </div>
+                <div class="loginform-button">
+                  <button class="login-btn" type="submit">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-atom"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

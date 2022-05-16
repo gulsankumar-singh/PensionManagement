@@ -1,0 +1,64 @@
+<div class="container-fluid py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-11">
+      <div class="card">
+        <h1 class="text-center">Welcome to Pension Management Portal</h1>
+        <div class="row justify-content-center">
+          <div class="form-group text-center">
+            <button routerLink="/login" class="button" *ngIf="!isLoggedIn">
+              Login
+            </button>
+            <button
+              routerLink="/calculatepension"
+              class="button"
+              *ngIf="isLoggedIn"
+            >
+              Calculate Pension
+            </button>
+          </div>
+        </div>
+        <div class="about-pension">
+          <h3>What Is a Pension Plan?</h3>
+          <hr />
+          <ul>
+            <li>
+              A pension plan is a retirement plan that requires an employer to
+              make contributions to a pool of funds set aside for a worker's
+              future benefit.
+            </li>
+            <li>
+              There are two main types of pension plans: the defined benefit and
+              the defined contribution plan.
+            </li>
+            <li>
+              A defined benefit plan guarantees a set monthly payment for life
+              (or a lump sum payment on retiring).
+            </li>
+            <li>
+              A defined contribution plan creates an investment account that
+              grows throughout the employee's working years. The balance is
+              available to the employee upon retiring.
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-us">
+          <h3>About Us</h3>
+          <hr />
+          <p>
+            The State Department has decided to introduce a seamless pension
+            processing system through integrated software, which would bring the
+            processing, sanctioning, authorisation and payment units under a
+            common platform. Further to this, acknowledging the lack of
+            institutional knowledge and inability of the CPPCs and bank branches
+            to resolve the pension related grievances of the pensioners, the
+            Department has decided to introduce direct credit of pension to
+            accounts of pensioners, leveraging the modern technology, thus
+            realising the goal of “Sanchar Pension, Seedha Vitaran” and removing
+            the requirement of intermediary agencies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

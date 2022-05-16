@@ -1,0 +1,77 @@
+<div class="container-fluid py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+      <h3 class="text-center blue">Calculate Pension</h3>
+      <div class="card card-input">
+        <div class="alert alert-danger" role="alert" *ngIf="validationError">
+          <p>{{ validationError }}</p>
+        </div>
+        <label class="form-control-label"
+          >Aadhaar Number<span class="text-danger"> *</span></label
+        >
+        <form
+          class="form-card text-center"
+          #pensionform="ngForm"
+          (ngSubmit)="onSubmit(pensionform)"
+        >
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-9 flex-column d-flex">
+              <input
+                type="text"
+                id="aadharNumber"
+                name="aadharNumber"
+                placeholder="Enter your Aadhaar Number"
+                ngModel
+                required
+                pattern="[0-9]{12}"
+              />
+            </div>
+            <div class="form-group col-sm-3 btn-div">
+              <button type="submit" class="button">Calculate Pension</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container card card-table" *ngIf="isPensionCalculated">
+  <h1>Pension Detail</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Aadhaar Number</th>
+        <th scope="col">PAN</th>
+        <th scope="col">Salary Earned</th>
+        <th scope="col">Allowance</th>
+        <th scope="col">Pension Type</th>
+        <th scope="col">Pension Amount</th>
+        <th scope="col">Bank Charge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ pensionDetail.name }}</td>
+        <td>{{ pensionDetail.aadharNumber }}</td>
+        <td>{{ pensionDetail.panNumber }}</td>
+        <td>{{ pensionDetail.salaryEarned }}</td>
+        <td>{{ pensionDetail.allowances }}</td>
+        <td>{{ pensionDetail.pensionType }}</td>
+        <td>{{ pensionDetail.pensionAmount }}</td>
+        <td>{{ pensionDetail.bankServiceCharge }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-atom"
+>
+  <p style="font-size: 20px; color: white">
+    Please wait while we calculating the pension...
+  </p>
+</ngx-spinner>

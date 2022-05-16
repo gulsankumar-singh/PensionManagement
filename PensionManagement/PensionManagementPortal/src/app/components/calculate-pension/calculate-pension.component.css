@@ -1,0 +1,66 @@
+.card {
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  border: none !important;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-input {
+  margin-top: 60px;
+}
+
+.card-table {
+  margin-top: 10px;
+}
+.blue-text {
+  color: #00bcd4;
+}
+.form-control-label {
+  margin-bottom: 0;
+}
+input,
+textarea,
+select {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300;
+}
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #c85000;
+  outline-width: 0;
+  font-weight: 400;
+}
+
+.button {
+  display: block;
+  align-items: center;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 18px;
+  text-transform: uppercase;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #fb8332;
+}
+
+.button:active {
+  background-color: #c85000;
+}
+
+.btn-div {
+  padding-top: 7.5px;
+}
