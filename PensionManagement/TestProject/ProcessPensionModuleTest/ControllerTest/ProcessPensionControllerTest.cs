@@ -74,7 +74,7 @@ namespace ProcessPensionModuleTest.ControllersTest
             Assert.IsInstanceOf<PensionDetailDto>(pensionDetail);
             Assert.IsNotNull(pensionDetail);
             Assert.AreEqual("Success", actionResultValue.Status);
-            Assert.AreEqual("Pension Calculated Successfully!!", actionResultValue.Message);
+            Assert.AreEqual("Pension Calculated Successfully!", actionResultValue.Message);
         }
 
         [Test]

@@ -40,7 +40,7 @@ namespace AuthenticationModuleTest.ControllersTest
             Assert.IsNotNull(authenticationController);
             Assert.IsNotNull(actionResult);
             Assert.AreEqual("Success", actionResultValue.Status);
-            Assert.AreEqual("Login Successful", actionResultValue.Message);
+            Assert.AreEqual("Token Generated Successfully", actionResultValue.Message);
             Assert.IsNotNull(actionResultValue.Response);
             Assert.IsInstanceOf<TokenDetail>(actionResultValue.Response);
             Assert.IsNotEmpty(tokenDetail.Token);
@@ -60,7 +60,7 @@ namespace AuthenticationModuleTest.ControllersTest
             //Act
             var authenticationController = new AuthenticationController(_configuration, _loggerMock.Object);
             var actionResult = authenticationController.GetAuthenticationToken(user);
-            var actionResultValue = (APIResponse)((NotFoundObjectResult)actionResult.Result).Value;
+            var actionResultValue = (APIResponse)((BadRequestObjectResult)actionResult.Result).Value;
 
             //Assert
             Assert.IsNotNull(authenticationController);
@@ -83,7 +83,7 @@ namespace AuthenticationModuleTest.ControllersTest
             //Act
             var authenticationController = new AuthenticationController(_configuration, _loggerMock.Object);
             var actionResult = authenticationController.GetAuthenticationToken(user);
-            var actionResultValue = (APIResponse)((NotFoundObjectResult)actionResult.Result).Value;
+            var actionResultValue = (APIResponse)((BadRequestObjectResult)actionResult.Result).Value;
 
             //Assert
             Assert.IsNotNull(authenticationController);
@@ -106,7 +106,7 @@ namespace AuthenticationModuleTest.ControllersTest
             //Act
             var authenticationController = new AuthenticationController(_configuration, _loggerMock.Object);
             var actionResult = authenticationController.GetAuthenticationToken(user);
-            var actionResultValue = (APIResponse)((NotFoundObjectResult)actionResult.Result).Value;
+            var actionResultValue = (APIResponse)((BadRequestObjectResult)actionResult.Result).Value;
 
             //Assert
             Assert.IsNotNull(authenticationController);
