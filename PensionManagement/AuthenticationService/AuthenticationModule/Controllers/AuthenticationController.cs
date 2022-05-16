@@ -80,7 +80,7 @@ namespace AuthenticationModule.Controllers
                     _configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Issuer).Value,
                         _configuration.GetSection(StaticData.JwtDetail).GetSection(StaticData.Audience).Value,
                     claims,
-                    expires: DateTime.UtcNow.AddMinutes(StaticData.ExpiryTime),
+                    expires: DateTime.UtcNow.AddSeconds(StaticData.ExpiryTime),
                     signingCredentials: signIn);
             var tokenHandler = new JwtSecurityTokenHandler();
 
