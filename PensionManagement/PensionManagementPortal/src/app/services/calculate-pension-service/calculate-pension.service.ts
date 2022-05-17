@@ -8,7 +8,7 @@ import { ApiPaths } from 'src/app/shared/enums/api-paths';
 
 @Injectable({ providedIn: 'root' })
 export class CalculatePensionService {
-  baseUrl: string = environment.processPensionServiceBaseUrl;
+  baseUrl: string = environment.processPensionBaseUrl;
   constructor(private httpClient: HttpClient) {}
 
   calculatePension(pensionInput: PensionInput) {

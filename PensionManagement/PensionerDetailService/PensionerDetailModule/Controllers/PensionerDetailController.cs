@@ -42,7 +42,7 @@ namespace PensionerDetailModule.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<PensionerDto>>> GetPensionerList()
         {
-            _logger.LogInformation("Starting GetPensionerList method");
+            _logger.LogInformation("Starting GetPensionerList method....");
 
             var pensionerList = await _pensionerRepository.GetAllPensioner();
             var pensionerDTO = new List<PensionerDto>();

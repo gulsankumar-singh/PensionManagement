@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  baseUrl: string = environment.authServiceBaseUrl;
+  baseUrl: string = environment.authBaseUrl;
   private tokenExpirationTimer: any;
   user = new BehaviorSubject<User>(null);
 

@@ -4,12 +4,10 @@
 
 export const environment = {
   production: false,
-  authServiceBaseUrl: 'http://20.121.165.207',
-  pensionerDetailServiceBaseUrl: 'http://20.237.56.64',
-  processPensionServiceBaseUrl: 'http://20.237.56.101',
-  authServiceBaseUrlLocal: 'http://localhost:8000',
-  pensionerDetailServiceBaseUrlLocal: 'http://localhost:8001',
-  processPensionServiceBaseUrlLocal: 'http://localhost:8002',
+  authBaseUrl: 'http://20.121.175.111',
+  processPensionBaseUrl: 'http://20.102.22.27',
+  authBaseUrlLocal: 'http://localhost:8000',
+  processPensionBaseUrlLocal: 'http://localhost:8002',
 };
 
 /*
