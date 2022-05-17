@@ -36,7 +36,6 @@ export class AuthInterceptorService implements HttpInterceptor {
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            // redirect user to the session expired page
             this.authService.logout();
             this.router.navigate(['/session-expired']);
           } else if (err.status === 400) {

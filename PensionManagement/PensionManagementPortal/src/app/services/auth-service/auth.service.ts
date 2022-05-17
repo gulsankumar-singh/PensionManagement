@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { ApiPaths } from 'src/app/shared/enums/api-paths';
 import { AuthResponseData } from 'src/app/shared/interfaces/interface';
 import { User } from 'src/app/shared/models/user';
@@ -57,14 +57,6 @@ export class AuthService {
     return null;
   }
 
-  isUserLogged() {
-    let storageData = localStorage.getItem('currentUser');
-    if (storageData) {
-      return true;
-    }
-    return false;
-  }
-
   autoLogin() {
     const currentUser: {
       userName: string;
@@ -84,9 +76,18 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-    } else {
-      this.router.navigate(['/session-expired']);
+      const expirationDuration =
+        new Date(currentUser._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expirationDuration);
     }
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+      this.router.navigate(['/session-expired']);
+    }, expirationDuration);
   }
 
   private handleAuthentication(
@@ -97,17 +98,9 @@ export class AuthService {
     const expirationDate = new Date(expiration);
     const user = new User(userName, token, expirationDate);
     this.user.next(user);
+    const timeout = expirationDate.getTime() - new Date().getTime();
+    console.log('timeout', timeout);
+    this.autoLogout(timeout);
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
-
-  // private handleError(errorRes: HttpErrorResponse) {
-  //   let errorMessage = 'An unknown error occured!';
-
-  //   if (errorRes instanceof HttpErrorResponse) {
-  //     if (errorRes.error && errorRes.error.message) {
-  //       errorMessage = errorRes.error.message;
-  //     }
-  //   }
-  //   return throwError(() => new Error(errorMessage));
-  // }
 }
