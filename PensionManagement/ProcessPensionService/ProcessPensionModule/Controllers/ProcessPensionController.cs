@@ -47,7 +47,7 @@ namespace ProcessPensionModule.Controllers
         public async Task<ActionResult<APIResponse>> ProcessPension(ProcessPensionInput processPensionInput)
         {
 
-            _logger.LogInformation("ProcessPension method execution started...");
+            _logger.LogInformation("Starting ProcessPension method....");
 
             APIResponse apiResponse = new APIResponse();
             PensionerVM pensionerInfo = await _getPensionerDetail.GetPensionerDetailByAadhaar(processPensionInput.AadhaarNumber);
@@ -97,10 +97,11 @@ namespace ProcessPensionModule.Controllers
         }
 
         /// <summary>
-        /// Helper for calculating the pension amount
+        /// Helper method for calculating the pension amount
         /// </summary>
-        /// <param name="pensionAmountModel"></param>
-        /// <returns></returns>
+        /// <param name="pensionAmountModel">PensionAmount model contains
+        /// information about salary, allowance, pension type and bank type</param>
+        /// <returns>Calculated pension amount</returns>
         private static double CalculatePensionAmount(PensionAmountModel pensionAmountModel)
         {
 
