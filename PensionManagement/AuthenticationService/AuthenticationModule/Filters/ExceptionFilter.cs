@@ -7,7 +7,7 @@ namespace AuthenticationModule.Filters
 {
     public class ExceptionFilter : ExceptionFilterAttribute
     {
-        private ILogger<ExceptionFilter> _logger;
+        private readonly ILogger<ExceptionFilter> _logger;
         public ExceptionFilter(ILogger<ExceptionFilter> logger)
         {
             _logger = logger;

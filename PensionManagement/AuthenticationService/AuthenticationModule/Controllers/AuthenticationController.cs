@@ -35,7 +35,7 @@ namespace AuthenticationModule.Controllers
         [HttpPost("Authenticate")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(APIResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<APIResponse> GetAuthenticationToken([FromBody] User user)
         {
             APIResponse response = new APIResponse();
