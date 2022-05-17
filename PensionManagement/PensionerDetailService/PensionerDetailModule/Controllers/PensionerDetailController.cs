@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using PensionerDetailModule.Models;
 using PensionerDetailModule.Models.Dto;
 using PensionerDetailModule.Repository.IRepository;
+using PensionerDetailModule.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,15 +34,15 @@ namespace PensionerDetailModule.API.Controllers
         /// <summary>
         /// Get List of Pensioner
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of pensioner</returns>
         [Route("GetAllPensioner")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PensionerDto>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<PensionerDto>>> GetPensionerList()
         {
-            _logger.LogInformation("Calling GetPensionerList method");
+            _logger.LogInformation("Starting GetPensionerList method");
 
             var pensionerList = await _pensionerRepository.GetAllPensioner();
             var pensionerDTO = new List<PensionerDto>();
@@ -56,22 +57,23 @@ namespace PensionerDetailModule.API.Controllers
 
 
         /// <summary>
-        /// Get Pensioner Detail by aadhaarNumber
+        /// Method for Getting Pensioner Detail by aadhaarNumber
         /// </summary>
-        /// <param name="aadhaarNumber"></param>
-        /// <returns>Pensioner detail associated to the aadhaarNumber</returns>
+        /// <param name="aadhaarNumber">Pensioner Aadhaar number</param>
+        /// <returns>Pensioner detail associated with the aadhaarNumber</returns>
         [Route("PensionerDetailByAadhaar")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PensionerDetailDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<PensionerDetailDto>> PensionerDetailByAadhaar(long aadhaarNumber)
         {
             _logger.LogInformation("Starting PensionerDetailByAadhaar method.....");
             Pensioner pensioner = await _pensionerRepository.GetPensionerByAadhaar(aadhaarNumber);
 
             if (pensioner == null)
-                return NotFound(new { message = "Pensioner not found"});
+                return NotFound(new { message = StaticData.PensionerNotFound});
 
             PensionerDetailDto pensionerDto = _mapper.Map<PensionerDetailDto>(pensioner);
 

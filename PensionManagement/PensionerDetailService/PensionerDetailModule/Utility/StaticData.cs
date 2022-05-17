@@ -18,6 +18,7 @@ namespace PensionerDetailModule.Utility
         public const string ContentType = "application/json";
         public const string Pensioners = "Pensioners";
         public const string Banks = "Banks";
+        public const string PensionerNotFound = "Pensioner not found!!";
 
     }
 }

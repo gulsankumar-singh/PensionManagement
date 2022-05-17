@@ -36,67 +36,52 @@ namespace PensionerDetailModule.AppDbContext
 
         private static List<Pensioner> GetPensionerDataFromCsv()
         {
-            List<Pensioner> pensionerDetails = null;
-            try
+            List<Pensioner>  pensionerDetails = new List<Pensioner>();
+            using (StreamReader sr = new StreamReader(StaticData.PensionerDataSet))
             {
-                pensionerDetails = new List<Pensioner>();
-                using (StreamReader sr = new StreamReader(StaticData.PensionerDataSet))
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        string[] values = line.Split(',');
+                    string[] values = line.Split(',');
 
-                        pensionerDetails.Add(new Pensioner()
-                        {
-                            Id = Convert.ToInt32(values[0]),
-                            Name = values[1],
-                            DateOfBirth = Convert.ToDateTime(values[2]),
-                            PanNumber = values[3],
-                            AadharNumber = Convert.ToInt64(values[4]),
-                            SalaryEarned = Convert.ToInt64(values[5]),
-                            Allowances = Convert.ToInt64(values[6]),
-                            PensionType = (PensionTypes)Enum.Parse(typeof(PensionTypes), values[7]),
-                            AccountNumber = Convert.ToInt64(values[8]),
-                            BankId = Convert.ToInt32(values[9]),
-                        });
-                    }
+                    pensionerDetails.Add(new Pensioner()
+                    {
+                        Id = Convert.ToInt32(values[0]),
+                        Name = values[1],
+                        DateOfBirth = Convert.ToDateTime(values[2]),
+                        PanNumber = values[3],
+                        AadharNumber = Convert.ToInt64(values[4]),
+                        SalaryEarned = Convert.ToInt64(values[5]),
+                        Allowances = Convert.ToInt64(values[6]),
+                        PensionType = (PensionTypes)Enum.Parse(typeof(PensionTypes), values[7]),
+                        AccountNumber = Convert.ToInt64(values[8]),
+                        BankId = Convert.ToInt32(values[9]),
+                    });
                 }
             }
-            catch (Exception ex)
-            {
-                 throw;
-            }
-            return pensionerDetails;
+           
+        return pensionerDetails;
         }
 
         private static List<Bank> GetBankDataFromCsv()
         {
-            List<Bank> bankList = null;
-            try
+            List<Bank> bankList = new List<Bank>();
+            using (StreamReader sr = new StreamReader(StaticData.BankDataSet))
             {
-                bankList = new List<Bank>();
-                using (StreamReader sr = new StreamReader(StaticData.BankDataSet))
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        string[] values = line.Split(',');
+                    string[] values = line.Split(',');
 
-                        bankList.Add(new Bank()
-                        {
-                            Id = Convert.ToInt32(values[0]),
-                            BankName = values[1],
-                            BankType = (BankTypes)Enum.Parse(typeof(BankTypes), values[2])
-                        });
-                    }
+                    bankList.Add(new Bank()
+                    {
+                        Id = Convert.ToInt32(values[0]),
+                        BankName = values[1],
+                        BankType = (BankTypes)Enum.Parse(typeof(BankTypes), values[2])
+                    });
                 }
-                return bankList;
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return bankList;
  
         }
 
