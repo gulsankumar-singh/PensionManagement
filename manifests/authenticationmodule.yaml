@@ -31,7 +31,7 @@ spec:
               memory: "128Mi"
               cpu: "0.3"
       imagePullSecrets:
-        - name: acr-secret-am
+        - name: acr-secret
 ---
 apiVersion: v1
 kind: Service
