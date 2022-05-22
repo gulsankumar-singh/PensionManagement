@@ -28,7 +28,7 @@ namespace ProcessPensionModule.Utility.SwaggerConfig
             {
                 Title = "ProcessPensionModule API",
                 Version = "v1",
-                Description ="This API Will Process The Pension for Registered User \n After Calculating The Pension Amount For Pension Management System"
+                Description ="Process Pension Microservice Will Process The Pension for Registered User After Calculating The Pension Amount For Pension Management System"
             });
 
             //Adding support for JWT token in the Swagger
