@@ -28,7 +28,7 @@ namespace PensionerDetailModule.Utility.SwaggerConfig
             {
                 Title = "PensionerDetailModule API",
                 Version = "v1", 
-                Description = "This API will provide Pensioner Detail for Pension Management System "
+                Description = "Pensioner Detail Microservice will provide Pensioner Detail for Pension Management System "
             });
 
             //Adding support for JWT token in the Swagger
