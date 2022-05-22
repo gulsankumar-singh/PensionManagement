@@ -28,7 +28,7 @@ namespace AuthenticationModule.Utility.SwaggerConfig
             {
                 Title = "AuthenticationModule API",
                 Version = "v1",
-                Description = "This API will be used to generate the JWT token for Pension Management System"
+                Description = "Authentication Microservice will be used to generate the JWT token for Pension Management System"
             });
 
             //Adding comment file

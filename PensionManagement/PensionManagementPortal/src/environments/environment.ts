@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  authBaseUrl: 'http://20.121.175.111',
-  processPensionBaseUrl: 'http://20.102.22.27',
+  authBaseUrl: 'http://20.85.192.188',
+  processPensionBaseUrl: 'http://20.121.175.227',
   authBaseUrlLocal: 'http://localhost:8000',
   processPensionBaseUrlLocal: 'http://localhost:8002',
 };
